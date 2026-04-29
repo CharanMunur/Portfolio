@@ -1,9 +1,11 @@
-import { Button } from "./components/ui/button";
+import MainPage from "./components/MainPage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
-      <Button>Click me</Button>
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <MainPage />
     </div>
   );
 };
