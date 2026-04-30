@@ -23,45 +23,47 @@ const MainPage = () => {
           <img
             src="https://avatars.githubusercontent.com/u/198460996?v=4"
             alt="profile"
-            className="w-32 h-32 rounded-full border-4 border-background absolute -bottom-16 left-6"
+            className="w-40 h-40 rounded-full border-4 border-background absolute -bottom-16 left-6"
           />
         </div>
 
-        {/* content */}
-        <div className="mt-20 space-y-8">
-          <h1 className="text-2xl font-semibold flex items-center gap-2">
-            Charan Munur
-            <span className="text-background">
-              <BadgeCheck color="currentColor" fill="#3b82f6" size={32} />
-            </span>
-          </h1>
+        <div className="mt-20 pl-8">
+          {/* content */}
+          <div className="space-y-8">
+            <h1 className="text-2xl font-semibold flex items-center gap-2">
+              Charan Munur
+              <span className="text-background">
+                <BadgeCheck color="currentColor" fill="#3b82f6" size={32} />
+              </span>
+            </h1>
 
-          <p className="text-4xl font-semibold">
-            Fullstack Developer -{" "}
-            <span className="text-3xl text-muted-foreground">
-              Learning Systems
-              <br />
-              Shipping Clean interfaces{" "}
+            <p className="text-4xl font-semibold">
+              Fullstack Developer -{" "}
+              <span className="text-3xl text-muted-foreground">
+                Learning Systems
+                <br />
+                Shipping Clean interfaces{" "}
+              </span>
+            </p>
+          </div>
+          {/* description */}
+          <p className="mt-6 text-muted-foreground leading-relaxed">
+            I build scalable web apps with{" "}
+            <span className="inline-flex flex-wrap items-center gap-2 align-middle">
+              {skills.map(({ name, icon }) => (
+                <span
+                  key={name}
+                  className="inline-flex items-center gap-1.5 px-2 py-0.5 text-sm bg-muted/50 border border-dashed border-border rounded-md"
+                >
+                  <img src={icon} className="w-4 h-4" alt={name} />
+                  {name}
+                </span>
+              ))}
             </span>
+            . Focused on performance and user experience. Exploring AI to build
+            smarter solutions.
           </p>
         </div>
-        {/* description */}
-        <p className="mt-6 text-muted-foreground leading-relaxed">
-          I build scalable web apps with{" "}
-          <span className="inline-flex flex-wrap items-center gap-2 align-middle">
-            {skills.map(({ name, icon }) => (
-              <span
-                key={name}
-                className="inline-flex items-center gap-1.5 px-2 py-0.5 text-sm bg-muted/50 border border-dashed border-border rounded-md"
-              >
-                <img src={icon} className="w-4 h-4" alt={name} />
-                {name}
-              </span>
-            ))}
-          </span>
-          . Focused on performance and user experience. Exploring AI to build
-          smarter solutions.
-        </p>
       </div>
     </main>
   );

@@ -32,52 +32,55 @@ const Navbar = () => {
 
   return (
     <>
-      <aside className="hidden h-screen border-r border-border/60 bg-background/85 md:sticky md:top-0 md:flex md:w-48 md:flex-col md:px-4 md:py-6">
-        <div className="flex flex-1 flex-col justify-center gap-1 text-sm font-medium text-muted-foreground ">
-          {navItems.map(({ href, label, icon: Icon, isRoute }) => {
-            const isActive = isRoute
-              ? location.pathname === href
-              : href === "#Home"
-                ? location.pathname === "/" && !location.hash
-                : location.pathname === "/" && location.hash === href;
-            const itemClass = `inline-flex h-10 w-full rounded-lg items-center gap-2 px-2.5 transition-colors ${
-              isActive
-                ? "bg-muted/55 text-foreground/90"
-                : "text-muted-foreground hover:bg-muted/15 hover:text-foreground/90"
-            }`;
+      <aside className="hidden h-screen border-r border-border/40 bg-background/90 md:sticky md:top-0 md:flex md:w-52 md:flex-col md:px-4 md:py-8">
+        <div className="flex h-full flex-col">
+          <div className="flex flex-1 flex-col justify-center gap-4 text-xl font-medium text-muted-foreground">
+            {navItems.map(({ href, label, icon: Icon, isRoute }) => {
+              const isActive = isRoute
+                ? location.pathname === href
+                : href === "#home"
+                  ? location.pathname === "/" &&
+                    (!location.hash || location.hash === href)
+                  : location.pathname === "/" && location.hash === href;
+              const itemClass = `inline-flex h-11 w-full items-center gap-2 rounded-md px-3.5 transition-colors duration-200 ${
+                isActive
+                  ? "bg-muted text-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+              }`;
 
-            return isRoute ? (
-              <Link key={label} to={href} className={itemClass}>
-                <Icon size={16} />
-                <span>{label}</span>
-              </Link>
-            ) : (
-              <a key={label} href={href} className={itemClass}>
-                <Icon size={16} />
-                <span>{label}</span>
-              </a>
-            );
-          })}
-        </div>
-        <div>
-          <Tabs
-            defaultValue="system"
-            className="w-full"
-            value={theme}
-            onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
-          >
-            <TabsList className="grid w-full grid-cols-3 rounded-md border border-border/40 bg-muted/40 p-1 group-data-horizontal/tabs:h-10">
-              {themes.map(({ theme, icon: Icon }) => (
-                <TabsTrigger
-                  key={theme}
-                  value={theme}
-                  className="h-full w-full rounded-smtext-muted-foreground hover:text-foreground data-[state=active]:bg-background data-[state=active]:text-foreground"
-                >
-                  <Icon size={16} />
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+              return isRoute ? (
+                <Link key={label} to={href} className={itemClass}>
+                  <Icon size={18} />
+                  <span>{label}</span>
+                </Link>
+              ) : (
+                <a key={label} href={href} className={itemClass}>
+                  <Icon size={18} />
+                  <span>{label}</span>
+                </a>
+              );
+            })}
+          </div>
+          <div>
+            <Tabs
+              defaultValue="system"
+              className="w-full"
+              value={theme}
+              onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
+            >
+              <TabsList className="grid w-full grid-cols-3 rounded-md border border-border/40 bg-muted/40 p-1 group-data-horizontal/tabs:h-10">
+                {themes.map(({ theme, icon: Icon }) => (
+                  <TabsTrigger
+                    key={theme}
+                    value={theme}
+                    className="h-8 w-full rounded-sm text-muted-foreground hover:text-foreground data-active:border data-active:border-border data-active:bg-card data-active:text-foreground data-[state=active]:border data-[state=active]:border-border data-[state=active]:bg-card data-[state=active]:text-foreground"
+                  >
+                    <Icon size={18} />
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          </div>
         </div>
       </aside>
     </>
