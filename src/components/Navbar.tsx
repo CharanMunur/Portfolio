@@ -1,4 +1,3 @@
-import { ModeToggle } from "@/features/theme/mode-toggle";
 import {
   BarChart3,
   BookOpenText,
