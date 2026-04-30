@@ -9,7 +9,7 @@ const MainPage = () => {
     { name: "Supabase", icon: "https://cdn.simpleicons.org/supabase" },
   ];
   return (
-    <main className="px-6 py-16">
+    <main className="flex px-6 py-16">
       <div className="max-w-4xl mx-auto">
         {/* banner */}
         <div className="relative">
