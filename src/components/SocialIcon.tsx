@@ -13,12 +13,14 @@ const SocialIcon = ({ icon, darkIcon, alt, className }: SocialIconProps) => {
       <img
         src={icon}
         alt={alt}
+        loading="lazy"
         className={cn("block", className, darkIcon ? "dark:hidden" : "")}
       />
       {darkIcon ? (
         <img
           src={darkIcon}
           alt={alt}
+          loading="lazy"
           className={cn("hidden", className, "dark:block")}
         />
       ) : null}

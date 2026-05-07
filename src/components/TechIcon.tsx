@@ -12,12 +12,14 @@ const TechIcon = ({ item, className }: TechIconProps) => {
       <img
         src={item.icon}
         alt={item.name}
+        loading="lazy"
         className={cn("block", className, item.darkIcon ? "dark:hidden" : "")}
       />
       {item.darkIcon ? (
         <img
           src={item.darkIcon}
           alt={item.name}
+          loading="lazy"
           className={cn("hidden", className, "dark:block")}
         />
       ) : null}

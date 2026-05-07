@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import TechIcon from "./TechIcon";
 import type { TechItem } from "@/data/tech";
 
-const SkillRow = ({
+const SkillRow = memo(({
   skills,
   direction,
 }: {
@@ -11,7 +12,7 @@ const SkillRow = ({
 }) => (
   <div className="overflow-hidden">
     <motion.div
-      className="flex gap-4 w-max"
+      className="flex gap-4 w-max will-change-transform"
       animate={{ x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"] }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
     >
@@ -26,6 +27,7 @@ const SkillRow = ({
       ))}
     </motion.div>
   </div>
-);
+));
+SkillRow.displayName = "SkillRow";
 
 export default SkillRow;

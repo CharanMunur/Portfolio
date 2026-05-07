@@ -17,6 +17,7 @@ const ProjectCard = ({
         <img
           src={imgSrc}
           alt={name}
+          loading="lazy"
           className="rounded-lg border border-border/80 w-full object-cover transition-all duration-500 ease-out group-hover/image:blur-xs"
         />
       </div>

@@ -4,10 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { useTheme } from "next-themes";
 
 const navItems = [
-  { href: "#home", label: "Home" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#stats", label: "Stats" },
+  { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog", isRoute: true },
 ];
 
@@ -23,11 +20,11 @@ const Navbar = () => {
   const currentTheme = theme ?? "system";
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-dashed border-border/60 bg-background/85 backdrop-blur supports-backdrop-filter:bg-foregr/70">
+    <nav className="sticky top-0 z-50 w-full border-b border-dashed border-border/60 bg-background/85 backdrop-blur supports-backdrop-filter:bg-foregr/90">
       <div className="mx-auto flex h-16 w-full max-w-3xl items-center gap-4 px-6">
-        <div className="shrink-0 text-xs font-light tracking-normal text-foreground sm:text-xl">
+        <Link to="/" className="shrink-0 text-xs font-light tracking-normal text-foreground sm:text-xl hover:opacity-80 transition-opacity">
           @charanmunur
-        </div>
+        </Link>
 
         <div className="flex flex-1 items-center justify-end gap-0.5 pr-2 sm:gap-1 sm:pr-3">
           {navItems.map(({ href, label, isRoute }) => {

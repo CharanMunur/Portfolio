@@ -17,6 +17,7 @@ const Hero = () => {
             <img
               src="https://avatars.githubusercontent.com/u/198460996?v=4"
               alt="profile"
+              loading="lazy"
               className="h-28 w-28 rounded-full border-2 border-border p-1 shadow-sm sm:h-40 sm:w-40"
             />
           </div>
@@ -80,13 +81,19 @@ const Hero = () => {
               Get in Touch
               <ChevronRight />
             </Button>
-            <Button
-              size="lg"
-              className="bg-card text-foreground border border-border border-dashed"
+            <a
+              href="https://drive.google.com/file/d/1AF0owusJPd1yf1vRwCJcaex04pnEVL_H/view?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
             >
-              Resume
-              <BookText />
-            </Button>
+              <Button
+                size="lg"
+                className="bg-card text-foreground border border-border border-dashed cursor-pointer"
+              >
+                Resume
+                <BookText />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
