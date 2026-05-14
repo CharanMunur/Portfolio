@@ -96,4 +96,24 @@ export const projectTech = {
   },
   supabase: { name: "Supabase", icon: "/tech/supabase.svg" },
   monaco: { name: "Monaco Editor", icon: "/tech/monaco.svg" },
+  nodejs: {
+    name: "Node.js",
+    icon: "/tech/nodejs-light.svg",
+    darkIcon: "/tech/nodejs-dark.svg",
+  },
+  ink: {
+    name: "Ink",
+    icon: "/tech/ink-light.svg",
+    darkIcon: "/tech/ink-dark.svg",
+  },
+  commander: {
+    name: "Commander.js",
+    icon: "/tech/commander-light.svg",
+    darkIcon: "/tech/commander-dark.svg",
+  },
+  execa: {
+    name: "Execa",
+    icon: "/tech/execa-light.svg",
+    darkIcon: "/tech/execa-dark.svg",
+  },
 } as const;

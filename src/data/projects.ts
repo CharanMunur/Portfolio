@@ -67,4 +67,29 @@ export const projects: Project[] = [
     liveLink: "https://markdown-editor-v1.netlify.app/",
     githubLink: "https://github.com/CharanMunur/markdown-editor",
   },
+  {
+    name: "Shadcn Scaffold",
+    imgSrc: "/projects/shadcn-scaffold.png",
+    description:
+      "An automated CLI tool that instantly bootstraps production-ready React applications with Vite, TypeScript, Tailwind CSS v4, and shadcn/ui.",
+    about:
+      "Built to eliminate boilerplate fatigue. shadcn-scaffold is an interactive command-line interface that completely automates modern React project setups. From configuring complex path aliases and injecting dark mode providers, to orchestrating heavy dependencies—this tool condenses hours of manual configuration into a single, lightning-fast terminal command.",
+    features: [
+      "Interactive terminal UI built with React Ink for dynamic package selection",
+      "Zero-config integration of Tailwind CSS v4 and shadcn/ui base components",
+      "Injects fully functional Theme Providers and custom Mode Toggles",
+      "Dynamically patches tsconfig.json and Vite settings to fix path aliasing bugs",
+      "Orchestrates child processes (Execa) for reliable dependency resolution",
+      "Published globally to NPM for instant execution via npx or bunx",
+    ],
+    techStack: [
+      projectTech.nodejs,
+      projectTech.typescript,
+      projectTech.ink,
+      projectTech.commander,
+      projectTech.execa,
+    ],
+    liveLink: "https://www.npmjs.com/package/shadcn-scaffold",
+    githubLink: "https://github.com/CharanMunur/shadcn-scaffold",
+  },
 ];
