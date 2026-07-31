@@ -29,7 +29,20 @@ const Navbar = () => {
       return;
     }
     doc.startViewTransition(() => {
-      setTheme(newTheme);
+      const isDark =
+        newTheme === "dark" ||
+        (newTheme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      flushSync(() => {
+        setTheme(newTheme);
+      });
     });
   };
 
