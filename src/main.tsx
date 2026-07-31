@@ -5,6 +5,7 @@ import "react-activity-calendar/tooltips.css";
 import App from "./App.tsx";
 import { ThemeProvider } from "./providers/theme-provider.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import Blog from "./pages/Blog.tsx";
 import Projects from "./pages/Projects.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
@@ -23,25 +24,27 @@ createRoot(document.getElementById("root")!).render(
       enableSystem
       disableTransitionOnChange
     >
-      <SmoothScroll>
-        <BrowserRouter>
-          <ScrollToTop />
-          <div className="flex flex-col min-h-screen bg-background text-foreground">
-            <Navbar />
-            <div className="flex-1">
-              <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/blogs" element={<Blog />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/projects/:slug" element={<ProjectDetail />} />
-                <Route path="/blogs/:slug" element={<BlogDetail />} />
-                <Route path="/contact" element={<Contact />} />
-              </Routes>
+      <TooltipProvider delayDuration={200}>
+        <SmoothScroll>
+          <BrowserRouter>
+            <ScrollToTop />
+            <div className="flex flex-col min-h-screen bg-background text-foreground">
+              <Navbar />
+              <div className="flex-1">
+                <Routes>
+                  <Route path="/" element={<App />} />
+                  <Route path="/blogs" element={<Blog />} />
+                  <Route path="/projects" element={<Projects />} />
+                  <Route path="/projects/:slug" element={<ProjectDetail />} />
+                  <Route path="/blogs/:slug" element={<BlogDetail />} />
+                  <Route path="/contact" element={<Contact />} />
+                </Routes>
+              </div>
+              <Footer />
             </div>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </SmoothScroll>
+          </BrowserRouter>
+        </SmoothScroll>
+      </TooltipProvider>
     </ThemeProvider>
   </StrictMode>,
 );

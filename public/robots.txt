@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://charanmunur.in/sitemap.xml

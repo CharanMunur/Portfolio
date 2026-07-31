@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import { flushSync } from "react-dom";
 
 const navItems = [
   { href: "/projects", label: "Projects" },
@@ -20,6 +21,17 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const currentTheme = theme ?? "system";
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleThemeChange = (newTheme: string) => {
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => void };
+    if (!doc.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+    doc.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+  };
 
   return (
     <nav
@@ -61,7 +73,7 @@ const Navbar = () => {
         <div className="hidden sm:flex shrink-0 items-center">
           <Tabs
             value={currentTheme}
-            onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
+            onValueChange={handleThemeChange}
           >
             <TabsList className="flex rounded-full border border-dashed border-border/70 bg-muted/30 gap-1 p-1">
               {themes.map(({ theme, icon: Icon }) => (
@@ -135,7 +147,7 @@ const Navbar = () => {
           </span>
           <Tabs
             value={currentTheme}
-            onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
+            onValueChange={handleThemeChange}
           >
             <TabsList className="flex rounded-full border border-dashed border-border/70 bg-muted/30 gap-1 p-1">
               {themes.map(({ theme, icon: Icon }) => (

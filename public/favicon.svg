@@ -1,12 +1,3 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="6" fill="#FFFFFF" />
-  <text
-    x="16"
-    y="23"
-    font-family="system-ui, -apple-system, sans-serif"
-    font-weight="900"
-    font-size="20"
-    fill="#000000"
-    text-anchor="middle"
-  >CM</text>
+  <rect x="3" y="5" width="26" height="26" rx="6" fill="#FF5F1F" />
 </svg>

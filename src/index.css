@@ -195,6 +195,7 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --expo-out: linear(0 0%, 0.1684 2.66%, 0.3165 5.49%, 0.446 8.52%, 0.5581 11.78%, 0.6535 15.29%, 0.7341 19.11%, 0.8011 23.3%, 0.8557 27.93%, 0.8962 32.68%, 0.9283 38.01%, 0.9529 44.08%, 0.9711 51.14%, 0.9833 59.06%, 0.9915 68.74%, 1 100%);
 }
 
 @layer base {
@@ -243,6 +244,25 @@
   .react-activity-calendar__scroll-container::-webkit-scrollbar {
     width: 0;
     height: 0;
+  }
+  ::view-transition-group(root) {
+    animation-timing-function: var(--expo-out);
+  }
+  ::view-transition-old(root),.dark::view-transition-old(root) {
+    animation: none;
+    animation-fill-mode: both;
+    z-index: -1;
+  }
+  ::view-transition-new(root) {
+    mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZD0ibTIwIDAgMjAgMzVIMHoiIGZpbGw9IndoaXRlIiBmaWx0ZXI9InVybCgjYmx1cikiLz48ZGVmcz48ZmlsdGVyIGlkPSJibHVyIj48ZmVHYXVzc2lhbkJsdXIgc3RkRGV2aWF0aW9uPSIxIi8+PC9maWx0ZXI+PC9kZWZzPjwvc3ZnPg==') center / 0 no-repeat;
+    animation: scale 1.2s;
+    animation-fill-mode: both;
+  }
+
+@keyframes scale {
+  to {
+    mask-size: 300vmax;
+    }
   }
 }
 
