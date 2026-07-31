@@ -32,7 +32,7 @@ const ProjectCard = ({
 
       <div className="flex items-center gap-4 px-2 mt-4">
         {techStack.map((tech) => (
-          <TechIcon key={tech.name} item={tech} className="w-5 h-5" />
+          <TechIcon key={tech.name} item={tech} className="w-5 h-5" showTooltip />
         ))}
       </div>
 

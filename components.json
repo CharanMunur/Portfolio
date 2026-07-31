@@ -22,7 +22,6 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@magicui": "https://magicui.design/r/{name}",
-    "@ncdai": "https://chanhdai.com/r/{name}.json"
+    "@magicui": "https://magicui.design/r/{name}"
   }
 }
