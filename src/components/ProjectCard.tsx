@@ -13,7 +13,7 @@ const ProjectCard = ({
   githubLink,
 }: Project) => {
   return (
-    <div className="flex flex-col gap-2 bg-card border border-dashed border-border/80 p-2 rounded-xl w-full overflow-hidden">
+    <div className="flex flex-col gap-2 bg-card border border-dashed border-border/80 p-1.5 rounded-xl w-full overflow-hidden">
       <div className="group/image rounded-lg overflow-hidden">
         <img
           src={imgSrc}

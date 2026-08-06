@@ -3,7 +3,7 @@ import { BiLink } from "react-icons/bi";
 
 const ComingSoonCard = () => {
   return (
-    <div className="flex flex-col gap-2 bg-card border border-dashed border-border/80 p-2 rounded-xl w-full overflow-hidden opacity-70">
+    <div className="flex flex-col gap-2 bg-card border border-dashed border-border/80 p-1.5 rounded-xl w-full overflow-hidden opacity-70">
       <div className="group/image rounded-lg overflow-hidden w-full aspect-video bg-muted/20 border border-dashed border-border/40 flex items-center justify-center">
         <span className="text-xl font-mono text-muted-foreground uppercase tracking-widest">
           Coming Soon
