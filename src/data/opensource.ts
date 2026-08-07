@@ -65,7 +65,7 @@ export const openSourceProjects: OpenSourceProject[] = [
         title: "docs: add syntax highlighting to troubleshooting code blocks",
         description: "Converted data.ts to data.tsx and added manual JSX highlighting markup to the code snippets in the Troubleshooting section to match the rest of the docs.",
         link: "https://github.com/dqev/reicon/pull/63",
-        status: "Open",
+        status: "Merged",
         date: "Aug 2026",
       },
       {
