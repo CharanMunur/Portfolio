@@ -1,6 +1,5 @@
 import ProjectCard from "@/components/ProjectCard";
-import ComingSoonCard from "@/components/ComingSoonCard";
-import ComingSoonCardWide from "@/components/ComingSoonCardWide";
+import ComingSoonCard, { ComingSoonCardWide } from "@/components/ComingSoonCard";
 import { projects } from "@/data/projects";
 import { useNavigate } from "react-router-dom";
 import { ChevronLeft } from "lucide-react";

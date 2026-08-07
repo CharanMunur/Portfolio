@@ -3,8 +3,7 @@ import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import ComingSoonCard from "./ComingSoonCard";
-import ComingSoonCardWide from "./ComingSoonCardWide";
+import ComingSoonCard, { ComingSoonCardWide } from "./ComingSoonCard";
 
 const ProjectSection = () => {
   const isEven = projects.length % 2 === 0;
