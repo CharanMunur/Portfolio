@@ -181,7 +181,7 @@ At some point, I also fixed my desk setup properly, and honestly, it mattered wa
 
 When your workspace feels good, you naturally want to sit there and work. You want to open the laptop, learn something, build something, explore something. Environment affects mindset more than people think.
 
-![My desk setup](/assets/IMG.png)
+![My desk setup](/images/IMG.png)
 
 ---
 
