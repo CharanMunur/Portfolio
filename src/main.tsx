@@ -15,6 +15,8 @@ import ScrollToTop from "./components/helpers/ScrollToTop.tsx";
 import BlogDetail from "./pages/BlogDetail.tsx";
 import SmoothScroll from "./components/helpers/SmoothScroll.tsx";
 import Footer from "./components/Footer.tsx";
+import OpenSource from "./pages/OpenSource.tsx";
+import OpenSourceDetail from "./pages/OpenSourceDetail.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -36,6 +38,8 @@ createRoot(document.getElementById("root")!).render(
                   <Route path="/blogs" element={<Blog />} />
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/projects/:slug" element={<ProjectDetail />} />
+                  <Route path="/opensource" element={<OpenSource />} />
+                  <Route path="/opensource/:slug" element={<OpenSourceDetail />} />
                   <Route path="/blogs/:slug" element={<BlogDetail />} />
                   <Route path="/contact" element={<Contact />} />
                 </Routes>
