@@ -27,7 +27,7 @@ A personal portfolio built with React and Vite that showcases projects, blogs, s
 
 ## What It Includes
 
-- Home page with hero, skills, featured projects, featured blogs, GitHub activity, and a quote section
+- Home page with hero, skills, featured projects, featured blogs, open source contributions, GitHub activity, and a quote section
 - Dedicated pages for `projects`, `blogs`, and `contact`
 - Detail routes for individual projects and blog posts
 - Theme switching with system, light, and dark support
@@ -41,6 +41,8 @@ A personal portfolio built with React and Vite that showcases projects, blogs, s
 - `/projects/:slug` project detail
 - `/blogs` all blogs
 - `/blogs/:slug` blog detail
+- `/opensource` all open source contributions
+- `/opensource/:slug` open source contribution detail
 - `/contact` contact page
 
 ## Visitor Tracking
@@ -139,7 +141,7 @@ The visitor endpoint reads these at runtime (set them in `.env` locally, and in 
 
 - `src/components/` reusable UI and section components
 - `src/pages/` route-level pages
-- `src/data/` portfolio content for projects, blogs, socials, and tech
+- `src/data/` portfolio content for projects, blogs, open source, socials, and tech
 - `src/lib/` shared utilities including fingerprint generation
 - `api/` Vercel serverless endpoints
 - `public/` static assets
