@@ -91,24 +91,24 @@ const ContributionList = ({
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
+                  className="group/link inline-flex items-center gap-1.5 text-[15px] font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="wrap-break-word">{item.title}</span>
-                  <ArrowUpRight className="w-3 h-3 shrink-0 text-muted-foreground/50 transition-all group-hover/link:text-muted-foreground group-hover/link:translate-x-px group-hover/link:-translate-y-px" />
+                  <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-muted-foreground/50 transition-all group-hover/link:text-muted-foreground group-hover/link:translate-x-px group-hover/link:-translate-y-px" />
                 </a>
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-[11px] text-muted-foreground/60">
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="font-mono text-xs text-muted-foreground/60">
                     #{item.id}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
                   <span
-                    className={`font-mono text-[11px] ${statusColor[item.status]}`}
+                    className={`font-mono text-xs ${statusColor[item.status]}`}
                   >
                     {statusLabel[item.status]}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="font-mono text-[11px] text-muted-foreground/60">
+                  <span className="font-mono text-xs text-muted-foreground/60">
                     {item.date}
                   </span>
                 </div>
@@ -118,7 +118,7 @@ const ContributionList = ({
 
           <AccordionContent>
             <div className="ml-7 pb-4 pl-4 border-l border-dashed border-border/60">
-              <p className="text-sm text-muted-foreground font-light leading-relaxed">
+              <p className="text-[15px] text-muted-foreground font-light leading-relaxed">
                 {item.description}
               </p>
             </div>

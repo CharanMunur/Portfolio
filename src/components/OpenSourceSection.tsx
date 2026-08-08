@@ -21,7 +21,7 @@ const OpenSourceSection = () => {
           return (
             <div key={project.name} className={`relative flex items-center gap-5 ${isLast ? "" : "pb-12"}`}>
               {/* Node: logo in a square */}
-              <div className="relative z-10 shrink-0 w-16 h-16 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm p-1 sm:p-1 overflow-hidden">
+              <div className="relative z-10 shrink-0 w-18 h-18 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm p-1 sm:p-1 overflow-hidden">
                 <img
                   src={project.logoLight}
                   alt={project.name}
@@ -41,14 +41,14 @@ const OpenSourceSection = () => {
                     to={`/opensource/${project.slug}`}
                     className="group inline-flex items-center gap-1.5"
                   >
-                    <span className="text-base font-light tracking-tight text-foreground group-hover:text-muted-foreground transition-colors">
+                    <span className="text-lg font-light tracking-tight text-foreground group-hover:text-muted-foreground transition-colors">
                       {project.name}
                     </span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-muted-foreground transition-all group-hover:translate-x-px group-hover:-translate-y-px" />
                   </Link>
                 </div>
 
-                <p className="mt-0.5 text-xs text-muted-foreground font-light line-clamp-1 leading-relaxed">
+                <p className="mt-0.5 text-sm text-muted-foreground font-light line-clamp-1 leading-snug">
                   {project.description}
                 </p>
 

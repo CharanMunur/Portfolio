@@ -26,18 +26,16 @@ const OpenSourceCard = ({ project }: { project: OpenSourceProject }) => {
         </div>
 
         {/* Text content */}
-        <div className="flex flex-col justify-between flex-1 min-w-0 p-2 pl-4">
-          <div>
-            <div className="flex items-start justify-between gap-2">
-              <span className="text-lg font-light tracking-tight text-foreground leading-tight">
-                {project.name}
-              </span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0 transition-all duration-200 group-hover:text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </div>
-            <p className="mt-1 text-sm text-muted-foreground font-light line-clamp-2 leading-relaxed">
-              {project.description}
-            </p>
+        <div className="flex flex-col justify-between flex-1 min-w-0 p-1.5 pl-4">
+          <div className="flex items-start justify-between gap-2">
+            <span className="text-lg font-light tracking-tight text-foreground leading-tight">
+              {project.name}
+            </span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/40 shrink-0 transition-all duration-200 group-hover:text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </div>
+          <p className="text-sm text-muted-foreground font-light line-clamp-2 leading-snug">
+            {project.description}
+          </p>
 
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1 text-xs font-mono text-muted-foreground/70">

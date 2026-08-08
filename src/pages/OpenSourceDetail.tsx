@@ -74,20 +74,18 @@ const OpenSourceDetail = () => {
             </div>
 
             {/* Text content */}
-            <div className="flex flex-col justify-center sm:justify-between flex-1 min-w-0 sm:py-0.5">
-              <div>
-                <h1 className="text-xl font-light tracking-tight sm:text-3xl">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-6 decoration-[0.2px] transition-all">
-                    {project.name}
-                  </a>
-                </h1>
-                <p className="mt-1 sm:mt-1.5 text-sm text-muted-foreground font-light leading-relaxed line-clamp-2 sm:line-clamp-none">
-                  {project.description}
-                </p>
-              </div>
+            <div className="flex flex-col justify-center flex-1 min-w-0 sm:py-0.5 gap-2">
+              <h1 className="text-xl font-light tracking-tight sm:text-3xl leading-none">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-6 decoration-[0.2px] transition-all">
+                  {project.name}
+                </a>
+              </h1>
+              <p className="text-sm sm:text-base text-muted-foreground font-light leading-snug line-clamp-2 sm:line-clamp-none">
+                {project.description}
+              </p>
 
               {/* Desktop Stats */}
-              <div className="hidden sm:block mt-4">
+              <div className="hidden sm:block mt-1 sm:mt-2">
                 {statPills}
               </div>
             </div>
