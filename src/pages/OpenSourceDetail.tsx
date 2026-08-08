@@ -48,7 +48,7 @@ const OpenSourceDetail = () => {
       <FadeIn yOffset={10} duration={0.4}>
         <button
           onClick={() => navigate("/opensource")}
-          className="flex w-fit items-center gap-2 text-sm font-light tracking-tight text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
+          className="flex w-fit items-center gap-2 text-md font-light tracking-tight text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
         >
           <ChevronLeft size={16} strokeWidth={2} />
           Back to Experience
@@ -60,11 +60,16 @@ const OpenSourceDetail = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4">
             {/* Square icon panel */}
-            <div className="shrink-0 w-16 h-16 sm:w-28 sm:h-28 rounded-xl border border-dashed border-border/80 bg-muted/20 flex items-center justify-center overflow-hidden">
+            <div className="shrink-0 w-16 h-16 sm:w-28 sm:h-28 rounded-xl border border-dashed border-border/80 bg-muted/20 flex items-center justify-center p-1.5 sm:p-1 overflow-hidden">
               <img
-                src={project.logo}
+                src={project.logoLight}
                 alt={project.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain dark:hidden"
+              />
+              <img
+                src={project.logoDark}
+                alt={project.name}
+                className="hidden w-full h-full object-contain dark:block"
               />
             </div>
 

@@ -10,7 +10,8 @@ export type Contribution = {
 export type OpenSourceProject = {
   name: string;
   slug: string;
-  logo: string;
+  logoLight: string;
+  logoDark: string;
   link: string;
   description: string;
   prs: Contribution[];
@@ -21,7 +22,8 @@ export const openSourceProjects: OpenSourceProject[] = [
   {
     name: "Excalidraw",
     slug: "excalidraw",
-    logo: "/images/opensource/excalidraw.webp",
+    logoLight: "/images/opensource/excalidraw-light.webp",
+    logoDark: "/images/opensource/excalidraw-dark.webp",
     link: "https://github.com/excalidraw/excalidraw",
     description: "Virtual whiteboard for sketching hand-drawn like diagrams",
     prs: [
@@ -56,7 +58,8 @@ export const openSourceProjects: OpenSourceProject[] = [
   {
     name: "Reicon",
     slug: "reicon",
-    logo: "/images/opensource/reicon.webp",
+    logoLight: "/images/opensource/reicon-light.webp",
+    logoDark: "/images/opensource/reicon-dark.webp",
     link: "https://github.com/dqev/reicon",
     description: "A beautifully crafted, open-source icon library",
     prs: [

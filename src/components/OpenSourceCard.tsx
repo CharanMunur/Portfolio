@@ -10,12 +10,18 @@ const OpenSourceCard = ({ project }: { project: OpenSourceProject }) => {
     >
       <div className="flex flex-row items-stretch w-full">
         {/* Square image panel */}
-        <div className="shrink-0 w-24 self-stretch flex items-center justify-center border-2 border-border rounded-xl group-hover:opacity-90 transition-opacity duration-200 overflow-hidden">
+        <div className="shrink-0 w-24 self-stretch flex items-center justify-center border-2 border-border rounded-xl group-hover:opacity-90 transition-opacity duration-200 p-1 sm:p-1 overflow-hidden">
           <img
-            src={project.logo}
+            src={project.logoLight}
             alt={project.name}
             loading="lazy"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain dark:hidden"
+          />
+          <img
+            src={project.logoDark}
+            alt={project.name}
+            loading="lazy"
+            className="hidden w-full h-full object-contain dark:block"
           />
         </div>
 

@@ -21,11 +21,16 @@ const OpenSourceSection = () => {
           return (
             <div key={project.name} className={`relative flex items-center gap-5 ${isLast ? "" : "pb-12"}`}>
               {/* Node: logo in a square */}
-              <div className="relative z-10 shrink-0 w-16 h-16 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm overflow-hidden">
+              <div className="relative z-10 shrink-0 w-16 h-16 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm p-1 sm:p-1 overflow-hidden">
                 <img
-                  src={project.logo}
+                  src={project.logoLight}
                   alt={project.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain dark:hidden"
+                />
+                <img
+                  src={project.logoDark}
+                  alt={project.name}
+                  className="hidden w-full h-full object-contain dark:block"
                 />
               </div>
 
