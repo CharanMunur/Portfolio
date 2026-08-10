@@ -28,3 +28,4 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+agy.md
