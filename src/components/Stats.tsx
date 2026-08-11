@@ -32,7 +32,7 @@ const DEFAULT_CELL_SIZE = 9;
 const DEFAULT_LABEL = "Top repositories:";
 const DEFAULT_MONTHS = 12;
 const WEEKS_PER_MONTH = 365.25 / 12 / 7;
-const STACK_LIMIT = 3;
+const STACK_LIMIT = 4;
 const MIN_CARD_WIDTH = 300;
 const MIN_LABEL_WEEKS = 3;
 const CARD_PADDING = 28;
@@ -184,7 +184,7 @@ function useGitHubUser(
                 <img
                   src={r.avatarUrl}
                   alt=""
-                  className="size-full object-cover rounded-full"
+                  className="size-full object-cover rounded-full ring-1 ring-border/50"
                   width="24"
                   height="24"
                 />
@@ -243,7 +243,7 @@ const Tooltip = ({
     >
       <motion.div
         ref={ref}
-        className="whitespace-nowrap rounded-lg bg-[#161616] px-2 py-1 text-[11px] font-medium text-neutral-200 border border-neutral-800 shadow-none"
+        className="whitespace-nowrap rounded-lg bg-popover px-2 py-1 text-[11px] font-medium text-popover-foreground border border-border shadow-none"
         initial={reduceMotion ? false : { opacity: 0, scale: 0.94 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.94 }}
@@ -332,6 +332,7 @@ const ContributionGrid = ({
       >
         {/* min-w-max keeps all weeks at native size */}
         <div className="min-w-max">
+          {/* Month name labels row above the grid */}
           {showMonths && (
             <motion.div
               className="flex"
@@ -354,7 +355,7 @@ const ContributionGrid = ({
                   style={{ width: cellSize }}
                 >
                   {month && (
-                    <span className="absolute left-0 top-0 text-[11px] leading-none text-neutral-500 font-medium">
+                    <span className="absolute left-0 top-0 text-[11px] leading-none text-muted-foreground font-medium">
                       {month}
                     </span>
                   )}
@@ -363,14 +364,17 @@ const ContributionGrid = ({
             </motion.div>
           )}
 
+
+          {/* Contribution cells grid — columns = weeks, rows = days */}
           <div className="flex" style={{ gap }}>
             {visible.map((week, weekIndex) => (
               <div key={weekIndex} className="flex flex-col" style={{ gap }}>
                 {week.map((day) => (
+                  // Outer div is the empty-state bg; inner div overlays the accent color
                   <motion.div
                     key={day.date}
                     onPointerEnter={hover(day)}
-                    className="shrink-0 rounded-[2.5px] bg-neutral-800/80"
+                    className="shrink-0 rounded-[2.5px] bg-border/60"
                     style={{ width: cellSize, height: cellSize }}
                     initial={reduceMotion ? false : { opacity: 0, scale: 0.4 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -391,6 +395,7 @@ const ContributionGrid = ({
         </div>
       </div>
 
+      {/* Hover tooltip — portalled to document.body */}
       <AnimatePresence>
         {hovered && (
           <Tooltip key="tooltip" hovered={hovered} reduceMotion={reduceMotion} />
@@ -415,7 +420,7 @@ const Avatar = ({
     layoutId={layoutId}
     transition={transition}
     className={cn(
-      "grid size-6 shrink-0 place-items-center overflow-hidden rounded-full bg-neutral-800 text-[10px] font-semibold uppercase text-neutral-200 ring-2 ring-neutral-900",
+      "grid size-6 shrink-0 place-items-center overflow-hidden rounded-full bg-muted border text-[10px] font-semibold uppercase text-foreground ring-2 ring-background",
       "[&_img]:size-full [&_img]:object-cover [&_svg]:size-full",
       className,
     )}
@@ -434,15 +439,15 @@ const RepoRow = ({
   transition: Transition;
 }) => {
   const className =
-    "flex items-center gap-2.5 rounded-lg mx-1.5 px-2 py-1.5 transition-colors hover:bg-neutral-800/80";
+    "flex items-center gap-2.5 rounded-lg mx-1.5 px-2 py-1.5 transition-colors hover:bg-muted/80";
 
   const content = (
     <>
       <Avatar repo={repo} layoutId={layoutId} transition={transition} />
-      <span className="flex-1 truncate text-xs text-neutral-200 font-medium">
+      <span className="flex-1 truncate text-xs text-foreground font-medium">
         {repo.name}
       </span>
-      <span className="flex items-center gap-1 text-xs tabular-nums text-neutral-400">
+      <span className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden className="text-[#e3b341]">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
@@ -477,7 +482,7 @@ const Chevron = ({
     strokeLinecap="round"
     strokeLinejoin="round"
     aria-hidden
-    className="size-5 shrink-0 text-[#5E656B]"
+    className="size-5 shrink-0 text-muted-foreground"
     initial={false}
     animate={{ rotate: open ? 180 : 0 }}
     transition={transition}
@@ -588,14 +593,15 @@ const GitHubActivity = ({
     <div
       data-slot="github-activity"
       className={cn(
-        "relative max-w-full overflow-hidden rounded-xl bg-card/70 p-3.5 text-neutral-100 border border-dashed border-border/80 shadow-none transition-all duration-300",
+        "relative max-w-full overflow-hidden rounded-xl bg-card/70 p-3.5 text-foreground border border-dashed border-border/80 shadow-none transition-all duration-300",
         repos.length > 0 && "pb-[68px]",
         className,
       )}
       style={finalStyle}
       {...props}
     >
-      <p className="mb-3 text-sm font-medium text-neutral-100 px-1 tracking-tight">
+      {/* Heading: total contribution count + year */}
+      <p className="mb-3 text-sm font-medium text-foreground px-1 tracking-tight">
         {heading}
       </p>
 
@@ -610,6 +616,7 @@ const GitHubActivity = ({
         reduceMotion={reduceMotion}
       />
 
+      {/* Floating repos panel — collapsed at bottom, expands to full overlay */}
       {repos.length > 0 && (
         <motion.div
           layout
@@ -617,7 +624,7 @@ const GitHubActivity = ({
           data-slot="github-activity-panel"
           data-state={open ? "open" : "closed"}
           className={cn(
-            "absolute inset-x-2.5 bottom-2.5 overflow-hidden bg-neutral-900/95 backdrop-blur-xl border border-neutral-800/80 shadow-none",
+            "absolute inset-x-2.5 bottom-2.5 overflow-hidden bg-card/95 backdrop-blur-xl border border-border/80 shadow-none",
             open && "top-2.5",
           )}
           style={{ borderRadius: 12 }}
@@ -628,11 +635,12 @@ const GitHubActivity = ({
             transition={headerTransition}
             className="flex items-center justify-between gap-2.5 py-2.5 px-3.5"
           >
-            <span className="truncate text-xs text-neutral-300 font-medium">
+            <span className="truncate text-sm text-foreground/80 font-medium">
               {label}
             </span>
 
             <div className="flex items-center gap-2.5">
+              {/* Stacked avatar images — visible only when panel is collapsed */}
               {!open && (
                 <div className="flex items-center">
                   {repos.slice(0, STACK_LIMIT).map((repo, index) => (
@@ -655,13 +663,14 @@ const GitHubActivity = ({
                 aria-label={
                   open ? "Hide top repositories" : "Show top repositories"
                 }
-                className="grid size-6 shrink-0 place-items-center rounded-full bg-neutral-800 hover:scale-105 active:scale-95 transition-transform"
+                className="grid size-6 shrink-0 place-items-center rounded-full bg-muted hover:scale-105 active:scale-95 transition-transform"
               >
                 <Chevron open={open} transition={transition} />
               </button>
             </div>
           </motion.div>
 
+          {/* Expanded repo list — animated in/out */}
           <AnimatePresence initial={false} mode="popLayout">
             {open && (
               <motion.ul

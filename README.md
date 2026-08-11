@@ -19,7 +19,7 @@ A personal portfolio built with React and Vite that showcases projects, blogs, s
 - TypeScript
 - Tailwind CSS v4
 - shadcn/ui
-- Framer Motion
+- motion/react
 - React Router
 - next-themes
 - Vercel serverless functions
@@ -102,10 +102,12 @@ The Vite dev server proxies `/api/*` to `http://localhost:3000`, which is where 
    bun install
    ```
 
-2. Create a `.env` file in the project root with your Supabase credentials:
+2. Create a `.env` file in the project root with your credentials:
    ```env
    SUPABASE_URL=https://<your-project-ref>.supabase.co
    SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
+   # Optional: raises GitHub API rate limit from 60 to 5000 req/hour
+   # GITHUB_TOKEN=<your-github-personal-access-token>
    ```
 
 ### Running locally
@@ -115,12 +117,12 @@ The Vite dev server proxies `/api/*` to `http://localhost:3000`, which is where 
 bun run dev
 ```
 
-**Terminal 2 — Vercel serverless API (visitor counter):**
+**Terminal 2 — Vercel serverless API (visitor counter + GitHub activity):**
 ```bash
 vercel dev --listen 3000
 ```
 
-> The Vite config proxies `/api` → `http://localhost:3000`, so both servers must be running for the visitor counter to work. If the API is not running, the footer counter silently stays hidden — everything else works fine.
+> The Vite config proxies `/api` → `http://localhost:3000`, so both servers must be running for the visitor counter and GitHub activity graph to work. If the API is not running, the footer counter silently stays hidden and the activity graph shows an empty placeholder — everything else works fine.
 
 ### Build for production
 
@@ -136,6 +138,7 @@ The visitor endpoint reads these at runtime (set them in `.env` locally, and in 
 |---|---|
 | `SUPABASE_URL` | Your Supabase project URL |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only) |
+| `GITHUB_TOKEN` | *(Optional)* GitHub personal access token — raises the GitHub API rate limit from 60 to 5 000 req/hour for `api/github.ts`. Not required for normal portfolio traffic. |
 
 ## Project Structure
 
