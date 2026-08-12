@@ -4,11 +4,11 @@ A personal portfolio built with React and Vite that showcases projects, blogs, s
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=CharanMunur%2FPortfolio&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=CharanMunur%2Fportfolio&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=CharanMunur/Portfolio&type=date&theme=dark&logscale&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=CharanMunur/Portfolio&type=date&logscale&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=CharanMunur/Portfolio&type=date&logscale&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&theme=dark&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
  </picture>
 </a>
 
