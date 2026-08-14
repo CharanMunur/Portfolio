@@ -47,6 +47,22 @@ export const openSourceProjects: OpenSourceProject[] = [
     description: "A meticulously crafted open-source SVG icon library for modern web apps.",
     prs: [
       {
+        id: "67",
+        title: "docs: add syntax highlighting to mcp server code blocks",
+        description: "Adds manual JSX syntax highlighting to the plain-text code blocks in the MCP Server documentation.",
+        link: "https://github.com/dqev/reicon/pull/67",
+        status: "Merged",
+        date: "Aug 2026",
+      },
+      {
+        id: "66",
+        title: "fix: correct logo download filenames and use cdn proxy for svg",
+        description: "Fixes the SVG download blocked by CORS and corrects download filenames.",
+        link: "https://github.com/dqev/reicon/pull/66",
+        status: "Merged",
+        date: "Aug 2026",
+      },
+      {
         id: "63",
         title: "docs: add syntax highlighting to troubleshooting code blocks",
         description: "Added JSX highlighting markup to troubleshooting code snippets.",
