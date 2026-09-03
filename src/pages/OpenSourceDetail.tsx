@@ -28,15 +28,15 @@ const OpenSourceDetail = () => {
 
   const statPills = (
     <div className="flex items-center gap-2 flex-wrap">
-      <span className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
+      <span className="inline-flex items-center gap-1.5 text-xs tracking-wide text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
         <GitPullRequest className="w-3 h-3 text-purple-500" />
         {project.prs.length} pull request{project.prs.length !== 1 ? "s" : ""}
       </span>
-      <span className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
+      <span className="inline-flex items-center gap-1.5 text-xs tracking-wide text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
         <CircleDot className="w-3 h-3 text-emerald-500" />
         {project.issues.length} issue{project.issues.length !== 1 ? "s" : ""}
       </span>
-      <span className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
+      <span className="inline-flex items-center gap-1.5 text-xs tracking-wide text-muted-foreground bg-muted/30 border border-border/60 border-dashed px-2.5 py-1 rounded-md">
         {totalContributions} total
       </span>
     </div>

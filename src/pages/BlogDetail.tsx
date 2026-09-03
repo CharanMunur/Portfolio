@@ -34,14 +34,14 @@ const BlogDetail = () => {
       <div className="flex flex-col gap-6">
         <FadeIn delay={0.1}>
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+            <span className="text-xs tracking-wide text-muted-foreground">
               {new Date(blog.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "short",
                 day: "numeric",
               })}
             </span>
-            <span className="flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5  text-xs text-muted-foreground">
               <Clock size={12} />
               {blog.readTime}
             </span>
@@ -61,7 +61,7 @@ const BlogDetail = () => {
             {blog.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-dashed border-border/70 bg-card px-2.5 py-0.5 font-mono text-xs text-muted-foreground"
+                className="flex items-center gap-1 text-[12px]  text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50"
               >
                 {tag}
               </span>

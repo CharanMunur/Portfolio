@@ -105,7 +105,7 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-card text-foreground border-dashed cursor-pointer"
+                className="bg-card border-dashed"
               >
                 Resume
                 <BookText />
