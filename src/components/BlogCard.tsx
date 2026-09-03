@@ -15,14 +15,14 @@ const BlogCard = ({ title, description, tags, date, readTime }: Blog) => {
       className="flex flex-col gap-3 bg-card border border-dashed border-border/80 p-4 sm:p-5 rounded-2xl w-full overflow-hidden hover:bg-muted/20 transition-all duration-200 cursor-pointer"
     >
       <div className="flex items-center justify-between">
-        <div className="font-mono text-[10px] sm:text-xs tracking-widest text-muted-foreground uppercase">
+        <div className="text-[10px] sm:text-xs tracking-wide text-muted-foreground ">
           {new Date(date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "short",
             day: "numeric",
           })}
         </div>
-        <div className="flex items-center gap-1.5 font-mono text-[10px] sm:text-xs text-muted-foreground">
+        <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-muted-foreground">
           <Clock size={12} className="sm:size-[14px]" />
           {readTime}
         </div>
@@ -43,7 +43,7 @@ const BlogCard = ({ title, description, tags, date, readTime }: Blog) => {
         {tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-md border border-dashed border-border/70 bg-background px-2 py-0.5 font-mono text-[10px] sm:text-xs text-muted-foreground"
+            className="flex items-center gap-1 text-[12px]  text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50"
           >
             {tag}
           </span>

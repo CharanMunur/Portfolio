@@ -83,7 +83,7 @@ export const MusicPlayer = () => {
             </span>
             {isPlaying && <MusicBars />}
           </div>
-          <span className="text-[11px] text-muted-foreground font-light uppercase tracking-wider">
+          <span className="text-[12px] text-muted-foreground font-light tracking-wide">
             Nujabes
           </span>
         </div>

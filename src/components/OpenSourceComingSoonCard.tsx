@@ -4,7 +4,7 @@ export const OpenSourceComingSoonCard = () => {
       <div className="flex flex-row items-stretch w-full">
         {/* Square image panel */}
         <div className="shrink-0 w-24 self-stretch flex items-center justify-center border-2 border-border/60 rounded-xl p-2 sm:p-2.5 overflow-hidden">
-          <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest text-center px-2 leading-relaxed">
+          <span className="text-sm  text-muted-foreground text-center px-2 leading-relaxed">
             Coming
             <br />
             Soon
@@ -23,14 +23,14 @@ export const OpenSourceComingSoonCard = () => {
           </p>
 
           <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground uppercase bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50">
-            Hidden
-          </span>
-          <span className="w-px h-2.5 bg-border/60" />
-          <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground uppercase bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50">
-            Stats
-          </span>
-        </div>
+            <span className="flex items-center gap-1 text-[12px]  text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50">
+              Hidden
+            </span>
+            <span className="w-px h-2.5 bg-border/60" />
+            <span className="flex items-center gap-1 text-[12px]  text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50">
+              Stats
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +45,8 @@ export const OpenSourceComingSoonCardWide = () => {
           More Contributions Coming Soon
         </span>
         <p className="text-sm font-light leading-relaxed text-muted-foreground line-clamp-2">
-          Actively exploring new open source repositories and working on upcoming pull requests. Stay tuned.
+          Actively exploring new open source repositories and working on upcoming pull requests.
+          Stay tuned.
         </p>
       </div>
 
@@ -53,7 +54,7 @@ export const OpenSourceComingSoonCardWide = () => {
         {["Pending", "Review"].map((label) => (
           <span
             key={label}
-            className="text-[10px] font-mono text-muted-foreground uppercase bg-muted/50 px-2 py-0.5 rounded-md border border-border/50"
+            className="flex items-center gap-1 text-[12px]  text-muted-foreground bg-muted/50 px-1.5 py-0.5 rounded-sm border border-border/50"
           >
             {label}
           </span>

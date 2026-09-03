@@ -54,17 +54,17 @@ const OpenSourceSection = () => {
 
                 {/* Stats */}
                 <div className="flex items-center gap-3 mt-2">
-                  <span className="flex items-center gap-1 text-xs font-mono text-muted-foreground/70">
+                  <span className="flex items-center gap-1 text-xs tracking-wide text-muted-foreground/70">
                     <GitPullRequest className="w-3 h-3" />
                     {project.prs.length} PR{project.prs.length !== 1 ? "s" : ""}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="flex items-center gap-1 text-xs font-mono text-muted-foreground/70">
+                  <span className="flex items-center gap-1 text-xs tracking-wide text-muted-foreground/70">
                     <CircleDot className="w-3 h-3" />
                     {project.issues.length} Issue{project.issues.length !== 1 ? "s" : ""}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="text-xs font-mono text-muted-foreground/70">
+                  <span className="text-xs tracking-wide text-muted-foreground/70">
                     {project.prs.length + project.issues.length} contributions
                   </span>
                 </div>

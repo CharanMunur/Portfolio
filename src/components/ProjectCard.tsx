@@ -39,30 +39,26 @@ const ProjectCard = ({ name, imgSrc, description, techStack, liveLink, githubLin
       <div className="w-full h-px bg-border mt-2 mb-1" />
 
       <div className="flex items-center justify-between mt-1 px-2 pb-2">
-        <div className="flex items-center gap-3">
-          <a
-            href={liveLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <BiLink className="w-4 h-4 text-muted-foreground hover:text-foreground cursor-pointer transition-colors" />
-          </a>
-          <a
-            href={githubLink}
-            target="_blank"
-            rel="noreferrer"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <LuGithub className="w-4 h-4 text-muted-foreground hover:text-foreground cursor-pointer transition-colors" />
-          </a>
-        </div>
-        <p
-          onClick={(e) => { e.stopPropagation(); navigate(slug); }}
-          className="text-xs font-mono text-muted-foreground hover:text-foreground cursor-pointer transition-colors uppercase tracking-widest"
+        <a
+          href={liveLink}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
-          Details →
-        </p>
+          <BiLink className="w-4 h-4" />
+          <span className="font-extralight">Live</span>
+        </a>
+        <a
+          href={githubLink}
+          target="_blank"
+          rel="noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+        >
+          <LuGithub className="w-4 h-4" />
+          <span className="font-extralight">Github</span>
+        </a>
       </div>
     </div>
   );
