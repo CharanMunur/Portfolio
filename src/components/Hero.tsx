@@ -1,19 +1,25 @@
+import { useState, useEffect } from "react";
 import { BadgeCheck, BookText, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import TechIcon from "./helpers/TechIcon";
 import { skills } from "@/data/tech";
 import { socials } from "@/data/socials";
 import SocialIcon from "./helpers/SocialIcon";
-import { motion } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
 import { containerVariants, itemVariants } from "@/lib/motionVariants";
 
+const LABELS = ["FullStack Developer", "Not a Vibe Coder"];
+
 const Hero = () => {
+  const [labelIdx, setLabelIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setLabelIdx((i) => (i + 1) % LABELS.length), 3000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <section
-      className="flex flex-col justify-center pt-32 pb-20 sm:pt-22 sm:pb-12"
-      id="home"
-    >
+    <section className="flex flex-col justify-center pt-32 pb-20 sm:pt-22 sm:pb-12" id="home">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -63,9 +69,29 @@ const Hero = () => {
 
         <motion.div variants={itemVariants} className="space-y-5 sm:space-y-6">
           <h1 className="max-w-full text-[1.7rem] font-normal tracking-tight leading-tight sm:text-[2.05rem] md:text-[2.15rem]">
-            FullStack Developer -{" "}
-            <span className="text-[0.95em] font-light text-muted-foreground sm:text-[0.96em]">
-              Learning Systems, Shipping Clean Interfaces.
+            <span style={{ display: "inline-grid" }}>
+              <span style={{ visibility: "hidden", gridArea: "1/1" }} aria-hidden>
+                {LABELS.reduce((a, b) => (a.length >= b.length ? a : b))}
+              </span>
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={labelIdx}
+                  style={{ gridArea: "1/1" }}
+                  initial={{ opacity: 0, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, filter: "blur(8px)" }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {LABELS[labelIdx]}
+                  {labelIdx === 1 && (
+                    <span className="text-[0.8em] ml-1.5">🤍</span>
+                  )}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            {" - "}
+            <span className="text-[0.85em] font-light text-muted-foreground sm:text-[0.90em]">
+              learning how systems actually work, and how clean code gets written
             </span>
           </h1>
           <p className="text-base font-light leading-7 text-muted-foreground sm:text-lg sm:leading-8">
@@ -76,23 +102,18 @@ const Hero = () => {
                   key={skill.name}
                   className="bg-card ml-1 inline-flex items-center gap-1.5 rounded-md border border-dashed px-2 py-1 text-xs text-foreground sm:px-2.5 sm:text-sm transition-colors hover:border-foreground/30"
                 >
-                  <TechIcon
-                    item={skill}
-                    className="h-3.5 w-3.5 sm:h-4 sm:w-4"
-                  />
+                  <TechIcon item={skill} className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   {skill.name}
                 </span>
               ))}
             </span>{" "}
-            — with a keen eye for detail and responsiveness. Also exploring
-            blockchain out of curiosity.
+            — with a keen eye for detail and responsiveness. Also exploring blockchain out of
+            curiosity.
           </p>
 
           <div className="flex flex-wrap gap-3 sm:gap-4 pt-2">
             <a href="/contact">
-              <Button
-                size="lg"
-              >
+              <Button size="lg">
                 Get in Touch
                 <ChevronRight strokeWidth={2.25} />
               </Button>
@@ -102,11 +123,7 @@ const Hero = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <Button
-                variant="outline"
-                size="lg"
-                className="bg-card border-dashed"
-              >
+              <Button variant="outline" size="lg" className="bg-card border-dashed">
                 Resume
                 <BookText />
               </Button>
@@ -119,3 +136,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

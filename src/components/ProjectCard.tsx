@@ -31,9 +31,14 @@ const ProjectCard = ({ name, imgSrc, description, techStack, liveLink, githubLin
       </div>
 
       <div className="flex items-center gap-4 px-2 mt-4">
-        {techStack.map((tech) => (
+        {techStack.slice(0, 8).map((tech) => (
           <TechIcon key={tech.name} item={tech} className="w-5 h-5" showTooltip />
         ))}
+        {techStack.length > 8 && (
+          <span className="text-sm text-muted-foreground font-light">
+            +{techStack.length - 8}
+          </span>
+        )}
       </div>
 
       <div className="w-full h-px bg-border mt-2 mb-1" />

@@ -21,7 +21,5 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {
-    "@magicui": "https://magicui.design/r/{name}"
-  }
+  "registries": {}
 }

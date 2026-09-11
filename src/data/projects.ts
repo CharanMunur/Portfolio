@@ -17,32 +17,39 @@ export const projects: Project[] = [
     name: "Shrtn",
     imgSrc: "/projects/shrtn.png",
     description:
-      "Shorten your links, track every click. See who's visiting — by browser, OS, and date. Built for speed with Redis-backed redirects.",
+      "A production URL shortener with sub-20ms edge redirects, smart device routing, auto-destruct links, and deep click analytics — deployed across Cloudflare, Render, and Vercel.",
     about:
-      "A full-stack URL shortening service built for real deployment. Paste a long URL, get a short link at shrtn.fun. Behind the scenes, every redirect hits Redis first — falling back to PostgreSQL only on a cache miss. Click analytics track browser, OS, and date breakdowns per link. Auth is stateless JWT with full OTP email verification and forgot/reset password flow via Resend.",
+      "A full-stack URL shortener & analytics platform. Short links resolve in under 20ms via a Go WebAssembly worker on Cloudflare Edge that queries Upstash Redis — asynchronously logging click data to PostgreSQL through Spring Boot. Supports custom aliases, auto-destruct limits, password protection, smart iOS/Android routing, QR codes, and deep per-link analytics with UTM tracking, referrer categorization, and a 7-day growth velocity.",
     features: [
-      "Base62 short code generation from PostgreSQL auto-increment IDs — no collisions, no randomness needed",
-      "Redis cache-aside on redirect path — zero DB queries on cache hit, 24h TTL",
-      "Click analytics per link: Browser breakdown, OS breakdown, click timeline, last 5 clicks",
-      "JWT authentication with OTP email verification via Resend (noreply@shrtn.fun)",
-      "Enable/disable toggle per link with immediate Redis cache eviction",
-      "25 URLs per user, 30-day auto-expiry, grouped click counts in a single JPQL query",
-      "User-Agent parsing via uap-java — browser and OS extracted at write time, aggregated at read time",
-      "Analytics responses cached in Redis and evicted on every new click — always fresh without polling",
-      "Deployed across Render (Docker) and Vercel with custom domain shrtn.fun",
+      "Go WebAssembly worker on Cloudflare Edge handles redirects in under 20ms across 300+ global locations using Upstash Redis REST",
+      "Redirect cache is warmed eagerly on link creation so the first click always hits Redis, never the database",
+      "Auto-destruct links automatically deactivate and evict from cache once a max click threshold is reached",
+      "Smart device routing resolves separate iOS, Android, and desktop destinations from the User-Agent at the edge",
+      "Click tracking runs asynchronously via ctx.waitUntil so analytics writes never affect redirect speed",
+      "Edge asset caching for static bundles eliminates cold-start 502 errors on Render's free tier",
+      "Per-link analytics cover browser, OS, country, referrer category, UTM params, a 7×24 traffic heatmap, and 7-day growth velocity",
+      "Links can be password-protected with bcrypt hashing, generate QR codes, and export analytics as CSV or JSON",
     ],
     techStack: [
+      // backend
+      projectTech.go,
+      projectTech.springboot,
+      projectTech.postgresql,
+      projectTech.redis,
+      // frontend
       projectTech.react,
       projectTech.typescript,
       projectTech.tailwindcss,
       projectTech.shadcnui,
-      projectTech.springboot,
-      projectTech.postgresql,
-      projectTech.redis,
-      projectTech.jwt,
+      projectTech.framermotion,
+      // devops
+      projectTech.cloudflare,
       projectTech.docker,
+      // auth / other
+      projectTech.jwt,
+      projectTech.webassembly,
     ],
-    liveLink: "https://app.shrtn.fun",
+    liveLink: "https://shrtn.fun",
     githubLink: "https://github.com/CharanMunur/shrtn",
   },
   {
@@ -73,7 +80,7 @@ export const projects: Project[] = [
   },
   {
     name: "Markdown Editor",
-    imgSrc: "/projects/markdowneditor.png",
+    imgSrc: "/projects/markdown-editor.png",
     description:
       "A Monaco-powered markdown editor with live GitHub-style preview, PDF export via Print.js, theme toggle, and optional sync scroll to keep both panes aligned.",
     about:
@@ -89,11 +96,14 @@ export const projects: Project[] = [
       "Bundled default markdown file for instant demo",
     ],
     techStack: [
+      // frontend core
       projectTech.react,
       projectTech.javascript,
       projectTech.tailwindcss,
-      projectTech.vite,
+      // main lib
       projectTech.monaco,
+      // build tool
+      projectTech.vite,
     ],
     liveLink: "https://markdown-editor-v1.netlify.app/",
     githubLink: "https://github.com/CharanMunur/markdown-editor",
@@ -140,12 +150,15 @@ export const projects: Project[] = [
       "Data persisted via localStorage — survives page refresh",
     ],
     techStack: [
+      // frontend core
       projectTech.react,
       projectTech.javascript,
       projectTech.tailwindcss,
-      projectTech.vite,
-      projectTech.motion,
+      // UI & animation libs
       projectTech.shadcnui,
+      projectTech.motion,
+      // build tool
+      projectTech.vite,
     ],
     liveLink: "https://supertodo-v1.netlify.app/",
     githubLink: "https://github.com/CharanMunur/supertodo",

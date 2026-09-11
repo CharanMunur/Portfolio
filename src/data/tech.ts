@@ -132,4 +132,8 @@ export const projectTech = {
     darkIcon: "/tech/execa-dark.svg",
   },
   docker: { name: "Docker", icon: "/tech/docker.svg" },
+  go: { name: "Go", icon: "/tech/go.svg" },
+  webassembly: { name: "WebAssembly", icon: "/tech/webassembly.svg" },
+  cloudflare: { name: "Cloudflare Workers", icon: "/tech/cloudflare.svg" },
+  framermotion: { name: "Framer Motion", icon: "/tech/motion.svg" },
 } as const;

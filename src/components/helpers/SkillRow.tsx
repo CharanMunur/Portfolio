@@ -18,7 +18,7 @@ const SkillRow = memo(({
       {[...skills, ...skills].map((skill, i) => (
         <span
           key={`${skill.name}-${i}`}
-          className="inline-flex items-center gap-2 px-4 py-1 bg-card rounded-lg border border-dashed whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-2 py-1 bg-card rounded-lg border border-dashed whitespace-nowrap"
         >
           <TechIcon item={skill} className="w-4 h-4" />
           {skill.name}

@@ -77,7 +77,7 @@ const ProjectDetail = () => {
             {project.techStack.map((tech) => (
               <span
                 key={tech.name}
-                className="bg-card ml-1 inline-flex items-center gap-1.5 rounded-md border border-dashed px-1 py-2 text-xs text-foreground sm:px-3.5 sm:text-sm"
+                className="bg-card ml-1 inline-flex items-center gap-1.5 rounded-md border border-dashed px-1 py-1.5 text-xs text-foreground sm:px-3.5 sm:text-sm"
               >
                 <TechIcon item={tech} className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 {tech.name}
