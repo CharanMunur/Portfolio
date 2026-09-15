@@ -7,6 +7,8 @@ import TechIcon from "@/components/helpers/TechIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import { FadeIn } from "@/components/helpers/FadeIn";
 
+import NotFound from "./NotFound";
+
 const ProjectDetail = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -15,11 +17,7 @@ const ProjectDetail = () => {
   );
 
   if (!project) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-xl text-muted-foreground">
-        Project not found
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (

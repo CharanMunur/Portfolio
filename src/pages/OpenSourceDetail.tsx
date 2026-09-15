@@ -11,17 +11,15 @@ import {
 import { FadeIn } from "@/components/helpers/FadeIn";
 import ContributionList from "@/components/ContributionList";
 
+import NotFound from "./NotFound";
+
 const OpenSourceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const project = openSourceProjects.find((p) => p.slug === slug);
 
   if (!project) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-xl text-muted-foreground font-light">
-        Project not found
-      </div>
-    );
+    return <NotFound />;
   }
 
   const totalContributions = project.prs.length + project.issues.length;

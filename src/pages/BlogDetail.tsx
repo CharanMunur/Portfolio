@@ -5,6 +5,8 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { FadeIn } from "@/components/helpers/FadeIn";
 
+import NotFound from "./NotFound";
+
 const BlogDetail = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
@@ -13,11 +15,7 @@ const BlogDetail = () => {
   );
 
   if (!blog) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-xl text-muted-foreground">
-        Blog not found
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (
