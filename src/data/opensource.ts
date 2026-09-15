@@ -20,6 +20,50 @@ export type OpenSourceProject = {
 
 export const openSourceProjects: OpenSourceProject[] = [
   {
+    name: "Excalidraw",
+    slug: "excalidraw",
+    logoLight: "/images/opensource/excalidraw-light.webp",
+    logoDark: "/images/opensource/excalidraw-dark.webp",
+    link: "https://github.com/excalidraw/excalidraw",
+    description: "A virtual collaborative whiteboard tool for sketching hand-drawn diagrams.",
+    prs: [
+      {
+        id: "12105",
+        title: "fix(editor): preserve loop detection for scaled linear elements",
+        description: "Preserved loop detection for linear elements when scaling by maintaining endpoint threshold checks.",
+        link: "https://github.com/excalidraw/excalidraw/pull/12105",
+        status: "Open",
+        date: "Sep 2026",
+      },
+      {
+        id: "11734",
+        title: "fix: add tooltips to sidebar header icons",
+        description: "Added tooltips to icon-only buttons in the sidebar header for better discoverability.",
+        link: "https://github.com/excalidraw/excalidraw/pull/11734",
+        status: "Open",
+        date: "Jul 2026",
+      }
+    ],
+    issues: [
+      {
+        id: "11731",
+        title: "Library sidebar icons missing tooltips",
+        description: "Missing tooltips on library sidebar icons.",
+        link: "https://github.com/excalidraw/excalidraw/issues/11731",
+        status: "Open",
+        date: "Jul 2026",
+      },
+      {
+        id: "11730",
+        title: "Language dropdown uses native browser select styling",
+        description: "Language selector used native browser styling instead of custom menu components.",
+        link: "https://github.com/excalidraw/excalidraw/issues/11730",
+        status: "Open",
+        date: "Jul 2026",
+      },
+    ],
+  },
+  {
     name: "Vengeance UI",
     slug: "vengeanceui",
     logoLight: "/images/opensource/vengeance-light.svg",
@@ -106,41 +150,5 @@ export const openSourceProjects: OpenSourceProject[] = [
       }
     ],
   },
-  {
-    name: "Excalidraw",
-    slug: "excalidraw",
-    logoLight: "/images/opensource/excalidraw-light.webp",
-    logoDark: "/images/opensource/excalidraw-dark.webp",
-    link: "https://github.com/excalidraw/excalidraw",
-    description: "A virtual collaborative whiteboard tool for sketching hand-drawn diagrams.",
-    prs: [
-      {
-        id: "11734",
-        title: "fix: add tooltips to sidebar header icons",
-        description: "Added tooltips to icon-only buttons in the sidebar header for better discoverability.",
-        link: "https://github.com/excalidraw/excalidraw/pull/11734",
-        status: "Open",
-        date: "Jul 2026",
-      }
-    ],
-    issues: [
-      {
-        id: "11731",
-        title: "Library sidebar icons missing tooltips",
-        description: "Missing tooltips on library sidebar icons.",
-        link: "https://github.com/excalidraw/excalidraw/issues/11731",
-        status: "Open",
-        date: "Jul 2026",
-      },
-      {
-        id: "11730",
-        title: "Language dropdown uses native browser select styling",
-        description: "Language selector used native browser styling instead of custom menu components.",
-        link: "https://github.com/excalidraw/excalidraw/issues/11730",
-        status: "Open",
-        date: "Jul 2026",
-      },
-    ],
-  }
 ];
 

@@ -78,10 +78,10 @@ const ContributionList = ({
           value={item.id}
           className="border-border/60 border-dashed"
         >
-          <AccordionTrigger className="hover:no-underline py-4 gap-4 items-start group/trigger">
-            <div className="flex items-start gap-3 flex-1 min-w-0 text-left">
+          <AccordionTrigger className="hover:no-underline py-4 gap-4 items-center group/trigger">
+            <div className="flex items-center gap-3 flex-1 min-w-0 text-left">
               {/* Status icon */}
-              <div className="mt-0.5 shrink-0">
+              <div className="shrink-0 flex items-center">
                 <StatusIcon status={item.status} type={type} />
               </div>
 
@@ -117,7 +117,7 @@ const ContributionList = ({
           </AccordionTrigger>
 
           <AccordionContent>
-            <div className="ml-7 pb-4 pl-4 border-l border-dashed border-border/60">
+            <div className="ml-7 mb-4 py-1.5 pl-4 border-l-2 border-muted-foreground/40 flex items-center">
               <p className="text-[15px] text-muted-foreground font-light leading-relaxed">
                 {item.description}
               </p>
