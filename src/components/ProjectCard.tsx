@@ -27,7 +27,7 @@ const ProjectCard = ({ name, imgSrc, description, techStack, liveLink, githubLin
 
       <div className="px-2 mt-4">
         <div className="text-xl font-light tracking-tight">{name}</div>
-        <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{description}</p>
+        <p className="mt-1 text-sm font-light text-muted-foreground line-clamp-2">{description}</p>
       </div>
 
       <div className="flex items-center gap-4 px-2 mt-4">
@@ -52,7 +52,7 @@ const ProjectCard = ({ name, imgSrc, description, techStack, liveLink, githubLin
           className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           <BiLink className="w-4 h-4" />
-          <span className="font-extralight">Live</span>
+          <span className="text-[15px] font-extralight">Live</span>
         </a>
         <a
           href={githubLink}
@@ -62,7 +62,7 @@ const ProjectCard = ({ name, imgSrc, description, techStack, liveLink, githubLin
           className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
         >
           <LuGithub className="w-4 h-4" />
-          <span className="font-extralight">Github</span>
+          <span className="text-[15px] font-extralight">Github</span>
         </a>
       </div>
     </div>

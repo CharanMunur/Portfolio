@@ -177,6 +177,8 @@
 
   --animate-marquee-left: marquee-left 20s linear infinite;
   --animate-marquee-right: marquee-right 20s linear infinite;
+  --animate-accordion-down: accordion-down 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-accordion-up: accordion-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --radius: 0.625rem;
   --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
   --tracking-tight: calc(var(--tracking-normal) - 0.025em);
@@ -222,7 +224,7 @@
   }
 
   body {
-    @apply bg-background text-foreground text-[15px] antialiased;
+    @apply bg-background text-foreground text-base antialiased;
     letter-spacing: var(--tracking-normal);
   }
 
@@ -276,6 +278,28 @@
 @keyframes marquee-right {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0%); }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
 }
 
 ::selection {

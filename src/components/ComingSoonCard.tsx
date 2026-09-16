@@ -10,7 +10,7 @@ const ComingSoonCard = () => {
 
       <div className="px-2 mt-4">
         <div className="text-xl font-light tracking-tight">Project Unknown</div>
-        <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+        <p className="mt-1 text-sm font-light text-muted-foreground line-clamp-2">
           Something awesome is currently being built. Exploring new ideas and technologies. Stay
           tuned for updates.
         </p>
@@ -33,11 +33,11 @@ const ComingSoonCard = () => {
       <div className="flex items-center justify-between mt-1 px-2 pb-2">
         <div className="flex items-center gap-1 text-muted-foreground/50 cursor-not-allowed">
           <BiLink className="w-4 h-4" />
-          <p className="font-extralight">Live</p>
+          <p className="text-[15px] font-extralight">Live</p>
         </div>
         <div className="flex items-center gap-1 text-muted-foreground/50 cursor-not-allowed">
           <LuGithub className="w-4 h-4" />
-          <p className="font-extralight">Github</p>
+          <p className="text-[15px] font-extralight">Github</p>
         </div>
       </div>
     </div>
@@ -60,9 +60,15 @@ export const ComingSoonCardWide = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0 mt-0.5">
-          <BiLink className="w-4 h-4 text-muted-foreground/50 cursor-not-allowed" />
-          <LuGithub className="w-4 h-4 text-muted-foreground/50 cursor-not-allowed" />
+        <div className="flex items-center gap-4 shrink-0 mt-0.5">
+          <div className="flex items-center gap-1 text-muted-foreground/50 cursor-not-allowed">
+            <BiLink className="w-4 h-4" />
+            <span className="text-[15px] font-extralight">Live</span>
+          </div>
+          <div className="flex items-center gap-1 text-muted-foreground/50 cursor-not-allowed">
+            <LuGithub className="w-4 h-4" />
+            <span className="text-[15px] font-extralight">Github</span>
+          </div>
         </div>
       </div>
 

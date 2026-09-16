@@ -103,10 +103,10 @@ const OpenSourceDetail = () => {
       <FadeIn delay={0.15}>
         <Tabs defaultValue="prs" className="w-full">
           <TabsList variant="line" className="w-full justify-start">
-            <TabsTrigger value="prs" className="flex-none px-4">
+            <TabsTrigger value="prs" className="flex-none px-4 text-sm font-normal">
               Pull Requests ({project.prs.length})
             </TabsTrigger>
-            <TabsTrigger value="issues" className="flex-none px-4">
+            <TabsTrigger value="issues" className="flex-none px-4 text-sm font-normal">
               Issues ({project.issues.length})
             </TabsTrigger>
           </TabsList>

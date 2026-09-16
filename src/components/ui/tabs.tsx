@@ -48,7 +48,7 @@ function TabsTrigger({
       data-slot="tabs-trigger"
       className={cn(
         // base
-        "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-medium whitespace-nowrap transition-all outline-none",
+        "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-md border border-transparent px-1.5 py-0.5 text-sm font-normal whitespace-nowrap transition-all outline-none",
         // text
         "text-muted-foreground hover:text-foreground",
         // vertical

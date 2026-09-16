@@ -91,7 +91,7 @@ const ContributionList = ({
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-[15px] font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
+                  className="group/link inline-flex items-center gap-1.5 text-base font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="wrap-break-word">{item.title}</span>
@@ -118,7 +118,7 @@ const ContributionList = ({
 
           <AccordionContent>
             <div className="ml-7 mb-4 py-1.5 pl-4 border-l-2 border-muted-foreground/40 flex items-center">
-              <p className="text-[15px] text-muted-foreground font-light leading-relaxed">
+              <p className="text-base text-muted-foreground font-light leading-relaxed">
                 {item.description}
               </p>
             </div>

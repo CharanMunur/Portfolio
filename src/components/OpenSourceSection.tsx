@@ -35,36 +35,36 @@ const OpenSourceSection = () => {
               </div>
 
               {/* Content */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
+              <div className="flex-1 min-w-0 flex flex-col justify-center gap-1">
+                <div className="flex items-center justify-between gap-2">
                   <Link
                     to={`/opensource/${project.slug}`}
-                    className="group inline-flex items-center gap-1.5"
+                    className="group inline-flex items-center gap-1.5 leading-tight"
                   >
-                    <span className="text-lg font-light tracking-tight text-foreground group-hover:text-muted-foreground transition-colors">
+                    <span className="text-lg font-light tracking-tight text-foreground group-hover:text-muted-foreground transition-colors leading-tight">
                       {project.name}
                     </span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground/40 group-hover:text-muted-foreground transition-all group-hover:translate-x-px group-hover:-translate-y-px" />
                   </Link>
                 </div>
 
-                <p className="mt-0.5 text-sm text-muted-foreground font-light line-clamp-1 leading-snug">
+                <p className="text-sm text-muted-foreground font-light line-clamp-1 leading-tight my-0.5">
                   {project.description}
                 </p>
 
                 {/* Stats */}
-                <div className="flex items-center gap-3 mt-2">
-                  <span className="flex items-center gap-1 text-xs tracking-wide text-muted-foreground/70">
-                    <GitPullRequest className="w-3 h-3" />
-                    {project.prs.length} PR{project.prs.length !== 1 ? "s" : ""}
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 text-xs leading-tight tracking-wide text-muted-foreground/70">
+                    <GitPullRequest className="w-3 h-3 shrink-0" />
+                    <span>{project.prs.length} PR{project.prs.length !== 1 ? "s" : ""}</span>
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="flex items-center gap-1 text-xs tracking-wide text-muted-foreground/70">
-                    <CircleDot className="w-3 h-3" />
-                    {project.issues.length} Issue{project.issues.length !== 1 ? "s" : ""}
+                  <span className="inline-flex items-center gap-1 text-xs leading-tight tracking-wide text-muted-foreground/70">
+                    <CircleDot className="w-3 h-3 shrink-0" />
+                    <span>{project.issues.length} Issue{project.issues.length !== 1 ? "s" : ""}</span>
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="text-xs tracking-wide text-muted-foreground/70">
+                  <span className="text-xs leading-tight tracking-wide text-muted-foreground/70">
                     {project.prs.length + project.issues.length} contributions
                   </span>
                 </div>
