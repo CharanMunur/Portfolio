@@ -601,7 +601,7 @@ const GitHubActivity = ({
       {...props}
     >
       {/* Heading: total contribution count + year */}
-      <p className="mb-3 text-sm font-light text-foreground px-1 tracking-tight">
+      <p className="mb-3 text-sm font-normal text-foreground px-1 tracking-tight">
         {heading}
       </p>
 
@@ -635,7 +635,7 @@ const GitHubActivity = ({
             transition={headerTransition}
             className="flex items-center justify-between gap-2.5 py-2.5 px-3.5"
           >
-            <span className="truncate text-sm text-foreground font-light">
+            <span className="truncate text-sm text-foreground font-normal">
               {label}
             </span>
 
