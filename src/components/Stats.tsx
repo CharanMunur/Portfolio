@@ -444,10 +444,10 @@ const RepoRow = ({
   const content = (
     <>
       <Avatar repo={repo} layoutId={layoutId} transition={transition} />
-      <span className="flex-1 truncate text-xs text-foreground font-medium">
+      <span className="flex-1 truncate text-[13px] text-foreground font-light">
         {repo.name}
       </span>
-      <span className="flex items-center gap-1 text-xs tabular-nums text-muted-foreground">
+      <span className="flex items-center gap-1 text-[13px] tabular-nums text-muted-foreground">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden className="text-[#e3b341]">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
@@ -601,7 +601,7 @@ const GitHubActivity = ({
       {...props}
     >
       {/* Heading: total contribution count + year */}
-      <p className="mb-3 text-sm font-medium text-foreground px-1 tracking-tight">
+      <p className="mb-3 text-sm font-light text-foreground px-1 tracking-tight">
         {heading}
       </p>
 
@@ -635,7 +635,7 @@ const GitHubActivity = ({
             transition={headerTransition}
             className="flex items-center justify-between gap-2.5 py-2.5 px-3.5"
           >
-            <span className="truncate text-sm text-foreground/80 font-medium">
+            <span className="truncate text-sm text-foreground font-light">
               {label}
             </span>
 
