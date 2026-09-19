@@ -20,6 +20,25 @@ export type OpenSourceProject = {
 
 export const openSourceProjects: OpenSourceProject[] = [
   {
+    name: "Bruno",
+    slug: "bruno",
+    logoLight: "/images/opensource/bruno-light.svg",
+    logoDark: "/images/opensource/bruno-dark.svg",
+    link: "https://github.com/usebruno/bruno",
+    description: "An open-source, lightweight API client for testing & exploring APIs.",
+    prs: [
+      {
+        id: "9295",
+        title: "fix(app): restore Ctrl+Y for Redo and consolidate fold toggle into Ctrl+I",
+        description: "Restored Ctrl+Y shortcut for Redo in CodeEditor components and consolidated document fold toggle into Ctrl+I across the app.",
+        link: "https://github.com/usebruno/bruno/pull/9295",
+        status: "Open",
+        date: "Sep 2026",
+      },
+    ],
+    issues: [],
+  },
+  {
     name: "Excalidraw",
     slug: "excalidraw",
     logoLight: "/images/opensource/excalidraw-light.webp",
