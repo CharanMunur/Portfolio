@@ -14,14 +14,14 @@ const OpenSourceSection = () => {
 
       <div className="relative flex flex-col">
         {/* Vertical spine — runs the full height */}
-        <div className="absolute left-[31px] top-8 bottom-8 w-0.5 border-l-2 border-solid border-border/80" />
+        <div className="absolute left-[35px] top-8 bottom-8 w-0.5 border-l-2 border-solid border-border/80" />
 
         {preview.map((project, idx) => {
           const isLast = idx === preview.length - 1;
           return (
             <div key={project.name} className={`relative flex items-center gap-5 ${isLast ? "" : "pb-12"}`}>
               {/* Node: logo in a square */}
-              <div className="relative z-10 shrink-0 w-18 h-18 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm p-1 sm:p-1 overflow-hidden">
+              <div className="relative z-10 shrink-0 w-20 h-20 rounded-xl border border-dashed border-border/80 bg-background flex items-center justify-center shadow-sm p-1.5 overflow-hidden">
                 <img
                   src={project.logoLight}
                   alt={project.name}

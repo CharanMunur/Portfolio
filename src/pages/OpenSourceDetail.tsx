@@ -58,7 +58,7 @@ const OpenSourceDetail = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-4">
             {/* Square icon panel */}
-            <div className="shrink-0 w-16 h-16 sm:w-28 sm:h-28 rounded-xl border border-dashed border-border/80 bg-muted/20 flex items-center justify-center p-1.5 sm:p-1 overflow-hidden">
+            <div className="shrink-0 w-20 h-20 sm:w-28 sm:h-28 rounded-xl border border-dashed border-border/80 bg-muted/20 flex items-center justify-center p-1.5 sm:p-1 overflow-hidden">
               <img
                 src={project.logoLight}
                 alt={project.name}
@@ -103,10 +103,10 @@ const OpenSourceDetail = () => {
       <FadeIn delay={0.15}>
         <Tabs defaultValue="prs" className="w-full">
           <TabsList variant="line" className="w-full justify-start">
-            <TabsTrigger value="prs" className="flex-none px-4 text-sm font-normal">
+            <TabsTrigger value="prs" className="flex-none px-3 sm:px-4 text-xs sm:text-sm font-normal">
               Pull Requests ({project.prs.length})
             </TabsTrigger>
-            <TabsTrigger value="issues" className="flex-none px-4 text-sm font-normal">
+            <TabsTrigger value="issues" className="flex-none px-3 sm:px-4 text-xs sm:text-sm font-normal">
               Issues ({project.issues.length})
             </TabsTrigger>
           </TabsList>

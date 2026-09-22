@@ -91,24 +91,24 @@ const ContributionList = ({
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-base font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
+                  className="group/link inline-flex items-center gap-1.5 text-sm sm:text-base font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="wrap-break-word">{item.title}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 shrink-0 text-muted-foreground/50 transition-all group-hover/link:text-muted-foreground group-hover/link:translate-x-px group-hover/link:-translate-y-px" />
                 </a>
                 <div className="flex items-center gap-2 mt-0.5">
-                  <span className="font-mono text-xs text-muted-foreground/60">
+                  <span className="font-mono text-[11px] sm:text-xs text-muted-foreground/60">
                     #{item.id}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
                   <span
-                    className={`font-mono text-xs ${statusColor[item.status]}`}
+                    className={`font-mono text-[11px] sm:text-xs ${statusColor[item.status]}`}
                   >
                     {statusLabel[item.status]}
                   </span>
                   <span className="w-px h-2.5 bg-border/60" />
-                  <span className="font-mono text-xs text-muted-foreground/60">
+                  <span className="font-mono text-[11px] sm:text-xs text-muted-foreground/60">
                     {item.date}
                   </span>
                 </div>
@@ -118,7 +118,7 @@ const ContributionList = ({
 
           <AccordionContent>
             <div className="ml-7 mb-4 py-1.5 pl-4 border-l-2 border-muted-foreground/40 flex items-center">
-              <p className="text-base text-muted-foreground font-light leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
                 {item.description}
               </p>
             </div>
