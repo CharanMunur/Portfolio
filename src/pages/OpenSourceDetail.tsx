@@ -73,12 +73,12 @@ const OpenSourceDetail = () => {
 
             {/* Text content */}
             <div className="flex flex-col justify-center flex-1 min-w-0 sm:py-0.5 gap-2">
-              <h1 className="text-xl font-light tracking-tight sm:text-3xl leading-none">
+              <h1 className="text-2xl font-light tracking-tight sm:text-3xl leading-none">
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-6 decoration-[0.2px] transition-all">
                   {project.name}
                 </a>
               </h1>
-              <p className="text-sm sm:text-base text-muted-foreground font-light leading-snug line-clamp-2 sm:line-clamp-none">
+              <p className="text-base text-muted-foreground font-light leading-snug line-clamp-2 sm:line-clamp-none">
                 {project.description}
               </p>
 
@@ -103,10 +103,10 @@ const OpenSourceDetail = () => {
       <FadeIn delay={0.15}>
         <Tabs defaultValue="prs" className="w-full">
           <TabsList variant="line" className="w-full justify-start">
-            <TabsTrigger value="prs" className="flex-none px-3 sm:px-4 text-xs sm:text-sm font-normal">
+            <TabsTrigger value="prs" className="flex-none px-3.5 sm:px-4 text-sm sm:text-base font-normal">
               Pull Requests ({project.prs.length})
             </TabsTrigger>
-            <TabsTrigger value="issues" className="flex-none px-3 sm:px-4 text-xs sm:text-sm font-normal">
+            <TabsTrigger value="issues" className="flex-none px-3.5 sm:px-4 text-sm sm:text-base font-normal">
               Issues ({project.issues.length})
             </TabsTrigger>
           </TabsList>
