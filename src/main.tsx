@@ -18,6 +18,7 @@ import Footer from "./components/Footer.tsx";
 import OpenSource from "./pages/OpenSource.tsx";
 import OpenSourceDetail from "./pages/OpenSourceDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import Uses from "./pages/Uses.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -42,6 +43,7 @@ createRoot(document.getElementById("root")!).render(
                   <Route path="/opensource" element={<OpenSource />} />
                   <Route path="/opensource/:slug" element={<OpenSourceDetail />} />
                   <Route path="/blogs/:slug" element={<BlogDetail />} />
+                  <Route path="/uses" element={<Uses />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>

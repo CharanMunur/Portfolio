@@ -1,155 +1,103 @@
-# Portfolio
+# Charan Munur — Portfolio
 
-A personal portfolio built with React and Vite that showcases projects, blogs, skills, GitHub activity, and a small visitor counter in the footer.
+A minimal, editorial developer portfolio built with React 19, Vite, TypeScript, and Tailwind CSS v4. Features responsive case-study detail pages, open-source contribution tracking, technical writing archive, interactive GitHub activity graph, and privacy-preserving visitor counter.
 
-## Star History
-
-<a href="https://www.star-history.com/?repos=CharanMunur%2Fportfolio&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&theme=dark&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=CharanMunur/portfolio&type=date&legend=top-left&sealed_token=Pq3UnD7nBjRFV2Dp_PoHfweVpHFOPeSWdWc0O4cc8zlEwCtno-kQjsdSCur3oBxn8OOV_lnRTpw8ls4PLQEikNwsGqKwSYzr0HLUAzyJzYM_40m6nhVrLg" />
- </picture>
-</a>
+---
 
 ## Stack
 
-- React 19
-- Vite
-- TypeScript
-- Tailwind CSS v4
-- shadcn/ui
-- motion/react
-- React Router
-- next-themes
-- Vercel serverless functions
-- Supabase for visitor storage
+- **Framework & Build**: React 19, Vite, TypeScript
+- **Styling & UI**: Tailwind CSS v4, shadcn/ui, Radix UI primitives
+- **Motion & Animation**: motion/react, Framer Motion, Lenis smooth scroll
+- **Routing**: React Router v7
+- **Theming**: `next-themes` (system, light, and dark mode support)
+- **Backend & API**: Vercel Serverless Functions (`api/`)
+- **Database**: Supabase (privacy-preserving visitor tracking)
+- **Package Manager**: Bun
 
-## What It Includes
-
-- Home page with hero, skills, featured projects, featured blogs, open source contributions, GitHub activity, and a quote section
-- Dedicated pages for `projects`, `blogs`, and `contact`
-- Detail routes for individual projects and blog posts
-- Theme switching with system, light, and dark support
-- Smooth scrolling and motion-driven section reveals
-- Footer visitor tracking with a locally generated fingerprint
+---
 
 ## Routes
 
-- `/` home
-- `/projects` all projects
-- `/projects/:slug` project detail
-- `/blogs` all blogs
-- `/blogs/:slug` blog detail
-- `/opensource` all open source contributions
-- `/opensource/:slug` open source contribution detail
-- `/contact` contact page
+- `/` — Homepage (Hero, Skills, Featured Projects, Open Source Timeline, Blogs, Uses preview, GitHub Activity, Quote)
+- `/projects` — All projects index
+- `/projects/:slug` — Project detail & case study
+- `/opensource` — Open source contributions index
+- `/opensource/:slug` — Open source contribution detail & PR/Issue list
+- `/blogs` — Technical articles & writing archive
+- `/blogs/:slug` — Blog article reader with Markdown rendering
+- `/uses` — Developer setup, hardware, editor configuration & tools
+- `/contact` — Contact page & social links
 
-## Visitor Tracking
+---
 
-The footer visitor counter is handled in two parts:
+## Features & Architecture
 
-- The client creates a local fingerprint in `src/lib/fingerprint.ts`.
-- That fingerprint is sent to the serverless endpoint at `api/visitors.ts`.
+- **Editorial Layout**: Narrow `max-w-3xl` reading column for high legibility across mobile and desktop.
+- **Monochrome Utility Aesthetic**: Low-weight typography, dashed borders, clean line tabs, and subtle motion reveals.
+- **Data-Driven Content**: All portfolio content (projects, open source PRs, blogs, uses, tech stack) is decoupled into `src/data/*.ts`.
+- **Responsive Typography System**: Proportional font scaling across small mobile screens (`< sm`) and desktop screens.
+- **Visitor Tracking**: Client-side hashed fingerprint (`src/lib/fingerprint.ts`) sent to Vercel serverless function (`api/visitors.ts`) backed by Supabase.
+- **GitHub Activity Graph**: Interactive contribution grid with month labels, tooltip popovers, and expandable repository panel.
 
-### User-Agent Tracking
-
-The **user-agent is explicitly part of the fingerprint input**. It is read from `navigator.userAgent`, combined with other browser/device signals, hashed locally, and stored in `localStorage` under `visitor_id`.
-
-The fingerprint inputs are:
-
-- `navigator.userAgent`
-- `navigator.language`
-- `screen.width x screen.height`
-- browser timezone from `Intl.DateTimeFormat().resolvedOptions().timeZone`
-- `navigator.hardwareConcurrency`
-- `navigator.deviceMemory` when available
-- a canvas-based hash generated in the browser
-
-Important behavior:
-
-- If `localStorage.visitor_id` already exists, the app reuses it.
-- The raw fingerprint inputs are not sent to the API.
-- Only the hashed `visitor_id` is posted to `/api/visitors`.
-
-### Backend Behavior
-
-The visitor API:
-
-- accepts `POST` requests with `{ visitor_id }`
-- inserts the visitor into Supabase with duplicate protection
-- reads the total visitor count from Supabase
-- returns the visitor's ordinal position plus the total count
-
-If Supabase env vars are missing or the API fails, the UI falls back gracefully and keeps the footer quiet.
+---
 
 ## Local Development
-
-The Vite dev server proxies `/api/*` to `http://localhost:3000`, which is where the Vercel serverless runtime runs. You need **two terminals** to have the visitor counter working locally.
 
 ### Prerequisites
 
 - [Bun](https://bun.sh)
-- [Vercel CLI](https://vercel.com/docs/cli) — install globally once:
-  ```bash
-  npm i -g vercel
-  ```
+- [Vercel CLI](https://vercel.com/docs/cli) (optional, for running local serverless API endpoints)
 
 ### Setup
 
-1. Install dependencies:
+1. **Install Dependencies**:
    ```bash
    bun install
    ```
 
-2. Create a `.env` file in the project root with your credentials:
+2. **Environment Variables** (Optional, for visitor counter & GitHub rate limits):
+   Create `.env` in the root directory:
    ```env
    SUPABASE_URL=https://<your-project-ref>.supabase.co
    SUPABASE_SERVICE_ROLE_KEY=<your-service-role-key>
-   # Optional: raises GitHub API rate limit from 60 to 5000 req/hour
-   # GITHUB_TOKEN=<your-github-personal-access-token>
+   # GITHUB_TOKEN=<your-github-personal-access-token> # Optional: raises API rate limit to 5000 req/hr
    ```
 
-### Running locally
+3. **Start Frontend Dev Server**:
+   ```bash
+   bun run dev
+   ```
 
-**Terminal 1 — Vite frontend:**
-```bash
-bun run dev
-```
+4. **Start Vercel API** (Optional, for visitor counter endpoint):
+   ```bash
+   vercel dev --listen 3000
+   ```
 
-**Terminal 2 — Vercel serverless API (visitor counter + GitHub activity):**
-```bash
-vercel dev --listen 3000
-```
-
-> The Vite config proxies `/api` → `http://localhost:3000`, so both servers must be running for the visitor counter and GitHub activity graph to work. If the API is not running, the footer counter silently stays hidden and the activity graph shows an empty placeholder — everything else works fine.
-
-### Build for production
+### Production Build
 
 ```bash
 bun run build
 ```
 
-## Environment Variables
-
-The visitor endpoint reads these at runtime (set them in `.env` locally, and in the Vercel project dashboard for production):
-
-| Variable | Description |
-|---|---|
-| `SUPABASE_URL` | Your Supabase project URL |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only) |
-| `GITHUB_TOKEN` | *(Optional)* GitHub personal access token — raises the GitHub API rate limit from 60 to 5 000 req/hour for `api/github.ts`. Not required for normal portfolio traffic. |
+---
 
 ## Project Structure
 
-- `src/components/` reusable UI and section components
-- `src/pages/` route-level pages
-- `src/data/` portfolio content for projects, blogs, open source, socials, and tech
-- `src/lib/` shared utilities including fingerprint generation
-- `api/` Vercel serverless endpoints
-- `public/` static assets
-
-## Notes
-
-- Most of the main page content is data-driven, so updating `src/data/*` changes the public portfolio content without touching layout code.
-- The `SUPABASE_SERVICE_ROLE_KEY` has full DB access — never expose it client-side. It is only used inside `api/visitors.ts` which runs server-side.
+```
+portfolio/
+├── api/                  # Vercel serverless API functions
+│   ├── github.ts        # GitHub contribution data fetcher
+│   └── visitors.ts      # Visitor counter endpoint (Supabase)
+├── public/
+│   └── images/          # Static assets & dark/light SVG logos
+└── src/
+    ├── components/       # Reusable UI & section components
+    │   ├── ui/          # Radix & shadcn primitives (tabs, accordion, button)
+    │   └── helpers/     # FadeIn animation, TechIcon, SmoothScroll
+    ├── data/            # Portfolio content (projects, opensource, blogs, uses)
+    ├── lib/             # Shared utilities & fingerprint generator
+    ├── pages/            # Route page components
+    ├── main.tsx          # Application entrypoint & Router config
+    └── index.css        # Global CSS variables & keyframe animations
+```

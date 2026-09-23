@@ -8,6 +8,7 @@ const navItems = [
   { href: "/projects", label: "Projects" },
   { href: "/opensource", label: "Open Source" },
   { href: "/blogs", label: "Blogs" },
+  { href: "/uses", label: "Uses" },
 ];
 
 const themes = [
@@ -36,13 +37,13 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden sm:flex flex-1 items-center justify-end gap-1 pr-3">
+        <div className="hidden sm:flex flex-1 items-center justify-end gap-0.5 sm:gap-1 pr-2">
           {navItems.map(({ href, label }) => {
             const isActive = location.pathname.startsWith(href);
 
-            const itemClass = `rounded-md px-3 py-2 text-base font-light transition-colors ${
+            const itemClass = `rounded-md px-2.5 py-1.5 text-sm sm:text-[15px] font-light transition-colors ${
               isActive
-                ? "!text-foreground"
+                ? "!text-foreground font-normal"
                 : "text-muted-foreground hover:text-foreground"
             }`;
 
