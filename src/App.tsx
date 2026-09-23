@@ -7,6 +7,7 @@ import QuoteSection from "./components/QuoteSection";
 const ProjectSection = lazy(() => import("./components/ProjectSection"));
 const OpenSourceSection = lazy(() => import("./components/OpenSourceSection"));
 const BlogSection = lazy(() => import("./components/BlogSection"));
+const UsesSection = lazy(() => import("./components/UsesSection"));
 const Stats = lazy(() => import("./components/Stats"));
 
 const App = () => {
@@ -43,6 +44,15 @@ const App = () => {
           >
             <FadeIn>
               <BlogSection />
+            </FadeIn>
+          </Suspense>
+          <Suspense
+            fallback={
+              <div className="h-40 animate-pulse bg-muted/20 rounded-xl" />
+            }
+          >
+            <FadeIn>
+              <UsesSection />
             </FadeIn>
           </Suspense>
           <Suspense
