@@ -19,10 +19,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // Fetch contribution calendar with safety catch & timeout
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
     const contribRes = await fetch(
       `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`,
-      { signal: AbortSignal.timeout(5000) }
+      { signal: controller.signal }
     );
+    clearTimeout(timeoutId);
     if (contribRes.ok) {
       const contribJson = (await contribRes.json()) as {
         contributions?: Array<{ date: string; count: number; level: 0 | 1 | 2 | 3 | 4 }>;
@@ -44,10 +47,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       authHeaders["Authorization"] = `Bearer ${GITHUB_TOKEN}`;
     }
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
     const reposRes = await fetch(
       `https://api.github.com/users/${encodeURIComponent(username)}/repos?type=owner&sort=pushed&per_page=20`,
-      { headers: authHeaders, signal: AbortSignal.timeout(5000) }
+      { headers: authHeaders, signal: controller.signal }
     );
+    clearTimeout(timeoutId);
 
     if (reposRes.ok) {
       const reposJson = (await reposRes.json()) as Array<{
