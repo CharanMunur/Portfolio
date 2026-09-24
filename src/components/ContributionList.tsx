@@ -91,7 +91,7 @@ const ContributionList = ({
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-base font-light tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
+                  className="group/link inline-flex items-center gap-1.5 text-base font-normal tracking-tight text-foreground leading-snug hover:text-muted-foreground transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="wrap-break-word">{item.title}</span>
