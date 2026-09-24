@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { useTheme } from "next-themes";
 import { useState } from "react";
+import { GitHubStars } from "./GitHubStars";
 
 const navItems = [
   { href: "/projects", label: "Projects" },
@@ -132,9 +133,7 @@ const Navbar = () => {
         <div className="h-px w-full bg-border/80" aria-hidden="true" />
 
         <div className="flex items-center justify-between px-1">
-          <span className="text-base font-light tracking-tight text-muted-foreground">
-            Theme
-          </span>
+          <GitHubStars repo="CharanMunur/Portfolio" />
           <Tabs
             value={currentTheme}
             onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}

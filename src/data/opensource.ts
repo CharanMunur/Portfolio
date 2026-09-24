@@ -91,6 +91,14 @@ export const openSourceProjects: OpenSourceProject[] = [
     description: "A modern React UI library with animated components for stunning landing pages.",
     prs: [
       {
+        id: "86",
+        title: "fix(docs): enhance codeblock syntax highlighting, navbar responsiveness, and docs tabs",
+        description: "Enhanced codeblock syntax highlighting, navbar responsiveness, and docs tabs.",
+        link: "https://github.com/Ashutoshx7/VengeanceUI/pull/86",
+        status: "Merged",
+        date: "Sep 2026",
+      },
+      {
         id: "69",
         title: "feat(docs): unify and redesign codeblock UI with dual-theme support",
         description: "Unifies CodeBlock design and resolves Next.js development crashes.",

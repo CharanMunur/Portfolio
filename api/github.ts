@@ -14,23 +14,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: "Missing username" });
   }
 
+  let contributions: Array<{ date: string; count: number; level: 0 | 1 | 2 | 3 | 4 }> = [];
+  let repos: Array<{ name: string; count: number; href: string; avatarUrl?: string }> = [];
+
+  // Fetch contribution calendar with safety catch & timeout
   try {
-    // Fetch contribution calendar from the public contributions API
     const contribRes = await fetch(
       `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`,
+      { signal: AbortSignal.timeout(5000) }
     );
-
-    if (!contribRes.ok) {
-      throw new Error(`Contributions API error: ${contribRes.status}`);
+    if (contribRes.ok) {
+      const contribJson = (await contribRes.json()) as {
+        contributions?: Array<{ date: string; count: number; level: 0 | 1 | 2 | 3 | 4 }>;
+      };
+      contributions = contribJson.contributions ?? [];
     }
+  } catch (err) {
+    console.warn("Contributions API network warning:", err);
+  }
 
-    const contribJson = (await contribRes.json()) as {
-      contributions: Array<{ date: string; count: number; level: 0 | 1 | 2 | 3 | 4 }>;
-    };
-
-    // Fetch top repos from the GitHub REST API
+  // Fetch top repos from GitHub REST API
+  try {
     const authHeaders: Record<string, string> = {
       Accept: "application/vnd.github+json",
+      "User-Agent": "Charan-Portfolio",
       "X-GitHub-Api-Version": "2022-11-28",
     };
     if (GITHUB_TOKEN) {
@@ -39,10 +46,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const reposRes = await fetch(
       `https://api.github.com/users/${encodeURIComponent(username)}/repos?type=owner&sort=pushed&per_page=20`,
-      { headers: authHeaders },
+      { headers: authHeaders, signal: AbortSignal.timeout(5000) }
     );
-
-    let repos: Array<{ name: string; count: number; href: string; avatarUrl?: string }> = [];
 
     if (reposRes.ok) {
       const reposJson = (await reposRes.json()) as Array<{
@@ -57,7 +62,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       repos = reposJson
         .filter((r) => !r.fork && !r.archived)
         .sort((a, b) => b.stargazers_count - a.stargazers_count)
-        .slice(0, 6)
+        .slice(0, 10)
         .map((r) => ({
           name: r.name,
           count: r.stargazers_count,
@@ -65,15 +70,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           avatarUrl: r.owner?.avatar_url,
         }));
     }
-
-    res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
-
-    return res.status(200).json({
-      contributions: contribJson.contributions ?? [],
-      repos,
-    });
   } catch (err) {
-    console.error("github api error:", err);
-    return res.status(500).json({ error: "Failed to fetch GitHub data" });
+    console.warn("GitHub Repos API network warning:", err);
   }
+
+  res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate=86400");
+
+  return res.status(200).json({
+    contributions,
+    repos,
+  });
 }
