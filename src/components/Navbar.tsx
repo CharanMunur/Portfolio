@@ -61,7 +61,8 @@ const Navbar = () => {
           aria-hidden="true"
         />
 
-        <div className="hidden sm:flex shrink-0 items-center">
+        <div className="hidden sm:flex shrink-0 items-center gap-3">
+          <GitHubStars repo="CharanMunur/Portfolio" />
           <Tabs
             value={currentTheme}
             onValueChange={(v) => setTheme(v as "light" | "dark" | "system")}
