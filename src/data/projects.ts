@@ -14,12 +14,36 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Stargazer",
+    imgSrc: "/projects/stargazer.png",
+    description:
+      "A client-side developer tool that transforms GitHub stargazers and repository milestones into 1600×900 social cards and 60fps MP4 celebration loops - powered by WebCodecs, HTML5 Canvas, and Astro.",
+    about:
+      "A privacy-first web application designed for open-source maintainers. Stargazer queries live contributor metadata directly from the GitHub REST API, renders deterministic 1600×900 canvas frames, and encodes native MP4 video loops frame-by-frame in-browser using WebCodecs - eliminating backend rendering queues and server tracking.",
+    features: [
+      "In-browser WebCodecs & mp4-muxer pipeline encodes true 60fps MP4 video loops with hardware acceleration and zero backend dependencies",
+      "100% client-side architecture keeps GitHub Personal Access Tokens strictly in transient React state with zero server tracking or databases",
+      "8 curated 2D canvas animation engines (Spotlight, Hyperdrive, Orbit, Milestone, etc.) with sub-millisecond deterministic frame drawing",
+      "Interactive Framer Motion studio preview stage with live theme switching between Obsidian dark and Warm Stone light variants",
+    ],
+    techStack: [
+      projectTech.astro,
+      projectTech.react,
+      projectTech.typescript,
+      projectTech.tailwindcss,
+      projectTech.webcodecs,
+      projectTech.framermotion,
+    ],
+    liveLink: "https://stargazer.charanmunur.in",
+    githubLink: "https://github.com/CharanMunur/stargazer",
+  },
+  {
     name: "Shrtn",
     imgSrc: "/projects/shrtn.png",
     description:
-      "A production URL shortener with sub-20ms edge redirects, smart device routing, auto-destruct links, and deep click analytics — deployed across Cloudflare, Render, and Vercel.",
+      "A production URL shortener with sub-20ms edge redirects, smart device routing, auto-destruct links, and deep click analytics - deployed across Cloudflare, Render, and Vercel.",
     about:
-      "A full-stack URL shortener & analytics platform. Short links resolve in under 20ms via a Go WebAssembly worker on Cloudflare Edge that queries Upstash Redis — asynchronously logging click data to PostgreSQL through Spring Boot. Supports custom aliases, auto-destruct limits, password protection, smart iOS/Android routing, QR codes, and deep per-link analytics with UTM tracking, referrer categorization, and a 7-day growth velocity.",
+      "A full-stack URL shortener & analytics platform. Short links resolve in under 20ms via a Go WebAssembly worker on Cloudflare Edge that queries Upstash Redis - asynchronously logging click data to PostgreSQL through Spring Boot. Supports custom aliases, auto-destruct limits, password protection, smart iOS/Android routing, QR codes, and deep per-link analytics with UTM tracking, referrer categorization, and a 7-day growth velocity.",
     features: [
       "Go WebAssembly worker on Cloudflare Edge handles redirects in under 20ms across 300+ global locations using Upstash Redis REST",
       "Redirect cache is warmed eagerly on link creation so the first click always hits Redis, never the database",
@@ -88,7 +112,7 @@ export const projects: Project[] = [
     features: [
       "Monaco Editor with syntax highlighting and code completion",
       "Live GitHub-styled markdown preview in the right pane",
-      "Sync scroll — preview stays aligned with the editor as you type",
+      "Sync scroll - preview stays aligned with the editor as you type",
       "PDF export via Print.js with a single click",
       "Copy entire content to clipboard",
       "Dark and light theme toggle",
@@ -114,7 +138,7 @@ export const projects: Project[] = [
     description:
       "An automated CLI tool that instantly bootstraps production-ready React applications with Vite, TypeScript, Tailwind CSS v4, and shadcn/ui.",
     about:
-      "Built to eliminate boilerplate fatigue. shadcn-scaffold is an interactive command-line interface that completely automates modern React project setups. From configuring complex path aliases and injecting dark mode providers, to orchestrating heavy dependencies—this tool condenses hours of manual configuration into a single, lightning-fast terminal command.",
+      "Built to eliminate boilerplate fatigue. shadcn-scaffold is an interactive command-line interface that completely automates modern React project setups. From configuring complex path aliases and injecting dark mode providers, to orchestrating heavy dependencies - this tool condenses hours of manual configuration into a single, lightning-fast terminal command.",
     features: [
       "Interactive terminal UI built with React Ink for dynamic package selection",
       "Zero-config integration of Tailwind CSS v4 and shadcn/ui base components",
@@ -144,10 +168,10 @@ export const projects: Project[] = [
       "Create, edit, and delete tasks with subtask support and completion tracking",
       "Priority levels (High, Medium, Low) with visual indicators",
       "Due date picker with date-grouped task views",
-      "Filter by All, Pending, and Completed — sort by status, priority, or date",
+      "Filter by All, Pending, and Completed - sort by status, priority, or date",
       "Smooth Framer Motion animations on task add, complete, and delete",
       "Dark and light theme toggle with persistent preference",
-      "Data persisted via localStorage — survives page refresh",
+      "Data persisted via localStorage - survives page refresh",
     ],
     techStack: [
       // frontend core

@@ -136,4 +136,14 @@ export const projectTech = {
   webassembly: { name: "WebAssembly", icon: "/tech/webassembly.svg" },
   cloudflare: { name: "Cloudflare Workers", icon: "/tech/cloudflare.svg" },
   framermotion: { name: "Framer Motion", icon: "/tech/motion.svg" },
+  astro: {
+    name: "Astro",
+    icon: "/tech/astro-light.svg",
+    darkIcon: "/tech/astro-dark.svg",
+  },
+  webcodecs: {
+    name: "WebCodecs",
+    icon: "/tech/webcodecs-light.svg",
+    darkIcon: "/tech/webcodecs-dark.svg",
+  },
 } as const;
