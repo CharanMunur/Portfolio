@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight } from "lucide-react";
+import { X } from "lucide-react";
 
 const ONE_HOUR_MS = 60 * 60 * 1000;
 const STORAGE_KEY = "stargazer_promo_dismissed_until";
@@ -93,19 +93,18 @@ export const StargazerPromo = () => {
             href="https://stargazer.charanmunur.in"
             target="_blank"
             rel="noreferrer"
-            className="group block relative rounded-2xl border border-dotted border-border/90 bg-card/70 p-[4px] shadow-xl backdrop-blur-md transition-all hover:border-foreground/40 cursor-pointer"
+            className="group block relative rounded-2xl border border-dotted border-border/80 bg-card/70 p-[5px] shadow-xl backdrop-blur-md transition-all hover:border-muted-foreground/40 cursor-pointer"
           >
             {/* Inner Card Framing */}
-            <div className="relative flex flex-col items-center gap-3.5 rounded-[14px] border border-dashed border-border/60 bg-card p-4 sm:p-5 text-center">
-              {/* Icon badge: X by default, morphs into ArrowUpRight when card is hovered */}
+            <div className="relative flex flex-col items-center gap-3.5 rounded-xl bg-card p-4 sm:p-5 text-center">
+              {/* Dedicated Dismiss (X) Button */}
               <button
                 onClick={handleDismiss}
                 aria-label="Close Stargazer promo"
-                title="Dismiss promo"
-                className="absolute top-2.5 right-2.5 z-10 flex h-6 w-6 items-center justify-center rounded-md border border-dashed border-border/70 text-foreground/80 hover:text-foreground hover:bg-accent transition-colors cursor-pointer"
+                title="Dismiss promo for 1 hour"
+                className="absolute top-2.5 right-2.5 z-10 flex h-6 w-6 items-center justify-center rounded-md border border-border/60 bg-muted/40 text-muted-foreground hover:border-muted-foreground/40 transition-colors cursor-pointer"
               >
-                <X size={14} className="shrink-0 block group-hover:hidden text-foreground/80" />
-                <ArrowUpRight size={14} className="shrink-0 hidden group-hover:block text-foreground" />
+                <X size={14} className="shrink-0 text-muted-foreground" />
               </button>
 
               {/* Logo in Middle */}
@@ -122,8 +121,8 @@ export const StargazerPromo = () => {
                 />
               </div>
 
-              {/* Increased Text Size with 'open-source project' phrasing */}
-              <p className="text-xs sm:text-sm font-light leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
+              {/* Description Copy */}
+              <p className="text-xs sm:text-sm font-light leading-relaxed text-muted-foreground">
                 An open-source tool to turn your GitHub stars into shareable videos & images
               </p>
             </div>
