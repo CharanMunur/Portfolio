@@ -1,43 +1,68 @@
-import { getFingerprint, markVisited } from "@/lib/fingerprint";
+import { getFingerprint, hasVisited, markVisited } from "@/lib/fingerprint";
 import { UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
 
+interface VisitorApiResponse {
+  count?: number | null;
+  total?: number | null;
+}
+
+async function requestVisitorCount(
+  method: "GET" | "POST",
+  visitorId: string,
+): Promise<VisitorApiResponse | null> {
+  const url =
+    method === "POST"
+      ? "/api/visitors"
+      : `/api/visitors?visitor_id=${encodeURIComponent(visitorId)}`;
+
+  const res = await fetch(url, {
+    method,
+    headers:
+      method === "POST" ? { "Content-Type": "application/json" } : undefined,
+    body: method === "POST" ? JSON.stringify({ visitor_id: visitorId }) : undefined,
+  });
+
+  if (!res.ok) {
+    return null;
+  }
+
+  return (await res.json()) as VisitorApiResponse;
+}
+
 const VisitorCount = () => {
   const [count, setCount] = useState<number | null>(null);
   const [total, setTotal] = useState<number | null>(null);
-  const [shouldTrack] = useState(
-    () => localStorage.getItem("visited") !== "true",
-  );
+  const [shouldTrack] = useState(() => !hasVisited());
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
 
     const track = async () => {
-      const visitor_id = getFingerprint();
-      const method = shouldTrack ? "POST" : "GET";
-      const url =
-        method === "POST"
-          ? "/api/visitors"
-          : `/api/visitors?visitor_id=${encodeURIComponent(visitor_id)}`;
+      const visitorId = getFingerprint();
 
       try {
-        const res = await fetch(url, {
-          method,
-          headers:
-            method === "POST" ? { "Content-Type": "application/json" } : undefined,
-          body:
-            method === "POST"
-              ? JSON.stringify({ visitor_id })
-              : undefined,
-        });
+        let data = await requestVisitorCount(
+          shouldTrack ? "POST" : "GET",
+          visitorId,
+        );
 
-        if (!res.ok) {
+        // Recover devices previously marked visited when their row wasn't recorded.
+        if (
+          !shouldTrack &&
+          data &&
+          typeof data.count !== "number" &&
+          typeof data.total === "number"
+        ) {
+          data = await requestVisitorCount("POST", visitorId);
+        }
+
+        if (!data) {
           return;
         }
 
-        const data = (await res.json()) as { count?: number; total?: number };
         if (active && typeof data.count === "number") {
           setCount(data.count);
         }
@@ -45,7 +70,7 @@ const VisitorCount = () => {
           setTotal(data.total);
         }
 
-        if (shouldTrack) {
+        if (typeof data.count === "number") {
           markVisited();
         }
       } catch {

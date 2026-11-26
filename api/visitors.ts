@@ -15,8 +15,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(200).json({ count: null, total: null });
       }
 
-      const visitorId =
+      const rawVisitorId =
         req.method === "POST" ? req.body?.visitor_id : req.query?.visitor_id;
+      const visitorId =
+        typeof rawVisitorId === "string"
+          ? rawVisitorId
+          : Array.isArray(rawVisitorId)
+            ? rawVisitorId[0]
+            : undefined;
 
       if (req.method === "POST" && !visitorId) {
         return res.status(200).json({ count: null, total: null });
@@ -71,30 +77,62 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(200).json({ count: null, total });
       }
 
-      const orderedVisitorsRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/visitors?select=visitor_id,created_at&order=created_at.asc&order=id.asc`,
+      const visitorRes = await fetch(
+        `${SUPABASE_URL}/rest/v1/visitors?select=id,created_at&visitor_id=eq.${encodeURIComponent(visitorId)}&limit=1`,
         {
           headers: authHeaders,
         },
       );
 
-      if (!orderedVisitorsRes.ok) {
+      if (!visitorRes.ok) {
         console.error(
-          "visitors api error: failed to read visitor order",
-          await orderedVisitorsRes.text(),
+          "visitors api error: failed to read visitor row",
+          await visitorRes.text(),
         );
         return res.status(200).json({ count: null, total });
       }
 
-      const orderedVisitors = (await orderedVisitorsRes.json()) as Array<{
-        visitor_id?: string;
+      const visitors = (await visitorRes.json()) as Array<{
+        id?: number | string;
+        created_at?: string;
       }>;
-      const count = orderedVisitors.findIndex(
-        (row) => row.visitor_id === visitorId,
+      const visitor = visitors[0];
+
+      if (
+        !visitor ||
+        visitor.id === undefined ||
+        visitor.id === null ||
+        !visitor.created_at
+      ) {
+        return res.status(200).json({ count: null, total });
+      }
+
+      const createdAt = encodeURIComponent(visitor.created_at);
+      const id = encodeURIComponent(String(visitor.id));
+      const rankRes = await fetch(
+        `${SUPABASE_URL}/rest/v1/visitors?select=id&or=(created_at.lt.${createdAt},and(created_at.eq.${createdAt},id.lte.${id}))&limit=1`,
+        {
+          headers: {
+            ...authHeaders,
+            Prefer: "count=exact",
+          },
+        },
       );
 
+      if (!rankRes.ok) {
+        console.error(
+          "visitors api error: failed to read visitor rank",
+          await rankRes.text(),
+        );
+        return res.status(200).json({ count: null, total });
+      }
+
+      const rankHeader = rankRes.headers.get("content-range");
+      const rankRaw = rankHeader?.split("/")[1];
+      const rank = rankRaw !== undefined ? Number(rankRaw) : NaN;
+
       return res.status(200).json({
-        count: count === -1 ? null : count + 1,
+        count: Number.isFinite(rank) && rank > 0 ? rank : null,
         total,
       });
     } catch (error) {

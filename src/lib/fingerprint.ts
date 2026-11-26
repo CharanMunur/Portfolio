@@ -38,20 +38,31 @@ export function generateFingerprint(): string {
 }
 
 
+function safeGetItem(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function safeSetItem(key: string, value: string): void {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Ignore storage errors in restricted browsing modes.
+  }
+}
+
 export function createFingerprint(): string {
   const visitorId = generateFingerprint();
-  localStorage.setItem("visitor_id", visitorId);
+  safeSetItem("visitor_id", visitorId);
 
   return visitorId;
 }
 
 export function getFingerprint(): string {
-  const visitorId = localStorage.getItem("visitor_id");
-  const visited = localStorage.getItem("visited");
-
-  if (visited === "true" && visitorId ) {
-    return visitorId;
-  }
+  const visitorId = safeGetItem("visitor_id");
 
   if (visitorId) {
     return visitorId;
@@ -60,6 +71,10 @@ export function getFingerprint(): string {
   return createFingerprint();
 }
 
+export function hasVisited(): boolean {
+  return safeGetItem("visited") === "true";
+}
+
 export function markVisited(): void {
-  localStorage.setItem("visited", "true");
+  safeSetItem("visited", "true");
 }
