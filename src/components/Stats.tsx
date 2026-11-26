@@ -663,7 +663,7 @@ const GitHubActivity = ({
                 aria-label={
                   open ? "Hide top repositories" : "Show top repositories"
                 }
-                className="grid size-6 shrink-0 place-items-center rounded-full bg-muted hover:scale-105 active:scale-95 transition-transform"
+                className="grid size-6 shrink-0 place-items-center rounded-full bg-muted hover:bg-accent transition-colors"
               >
                 <Chevron open={open} transition={transition} />
               </button>
